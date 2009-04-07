@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project" default="compile">
+
+	<property name="build.dir" value="build" />
+
+	<path id="build.classpath">
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="${build.dir}" failonerror="false" />
+		<mkdir dir="${build.dir}" />
+	</target>
+
+	<target name="compile" depends="clean">
+		<mkdir dir="${build.dir}" />
+		<javac destdir="${build.dir}" classpathref="build.classpath">
+			<src path="src/main/java" />
+			<src path="appsrc" />
+		</javac>
+	</target>
+	
+	<target name="resources" depends="clean">
+		<copy todir="${build.dir}">
+			<fileset dir="dir" id="id">
+		    <exclude name="**.java"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="run" depends="compile, resources">
+		<java classname="com.asolutions.scmsshd.Main" >
+			<classpath>
+				<fileset dir="lib">
+					<include name="*.jar" />
+				</fileset>
+				<fileset dir="${build.dir}">
+					<include name="*" />
+				</fileset>
+			</classpath>
+		</java>
+	</target>
+
+</project>

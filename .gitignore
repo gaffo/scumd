@@ -1,0 +1,8 @@
+*.class
+target
+target/*
+bin
+bin/*
+build
+build/*
+nohup.out

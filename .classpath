@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="appsrc"/>
+	<classpathentry kind="src" path="resource"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/commons-io-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/bcprov-jdk15-140.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/jline-0.9.1.jar"/>
+	<classpathentry kind="lib" path="lib/jline-0.9.94.jar"/>
+	<classpathentry kind="lib" path="lib/jpam-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/jsch-0.1.40.jar"/>
+	<classpathentry kind="lib" path="lib/junit-4.4.jar"/>
+	<classpathentry kind="lib" path="lib/jzlib-1.0.7.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.13.jar"/>
+	<classpathentry kind="lib" path="lib/mina-core-2.0.0-M4.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.4.3.jar"/>
+	<classpathentry kind="lib" path="lib/spring-beans-2.5.5.jar"/>
+	<classpathentry kind="lib" path="lib/spring-context-2.5.5.jar"/>
+	<classpathentry kind="lib" path="lib/spring-core-2.5.5.jar"/>
+	<classpathentry kind="lib" path="lib/jgit.jar" sourcepath="/egit/org.spearce.jgit/src"/>
+	<classpathentry kind="lib" path="testlib/bsh-core-2.0b4.jar"/>
+	<classpathentry kind="lib" path="testlib/cglib-2.1_3-src.jar"/>
+	<classpathentry kind="lib" path="testlib/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="testlib/hamcrest-core-1.1.jar"/>
+	<classpathentry kind="lib" path="testlib/hamcrest-library-1.1.jar"/>
+	<classpathentry kind="lib" path="testlib/jmock-2.5.1.jar"/>
+	<classpathentry kind="lib" path="testlib/jmock-junit3-2.5.1.jar"/>
+	<classpathentry kind="lib" path="testlib/jmock-junit4-2.5.1.jar"/>
+	<classpathentry kind="lib" path="testlib/jmock-legacy-2.5.1.jar"/>
+	<classpathentry kind="lib" path="testlib/jmock-script-2.5.1.jar"/>
+	<classpathentry kind="lib" path="testlib/objenesis-1.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
