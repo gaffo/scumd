@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="appsrc"/>
 	<classpathentry kind="src" path="resource"/>
-	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="src" path="depend/minasshd/src"/>
 	<classpathentry kind="src" path="junit"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
