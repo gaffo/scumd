@@ -22,7 +22,6 @@
 	<classpathentry kind="lib" path="lib/spring-beans-2.5.5.jar"/>
 	<classpathentry kind="lib" path="lib/spring-context-2.5.5.jar"/>
 	<classpathentry kind="lib" path="lib/spring-core-2.5.5.jar"/>
-	<classpathentry kind="lib" path="lib/jgit.jar" sourcepath="/egit/org.spearce.jgit/src"/>
 	<classpathentry kind="lib" path="testlib/bsh-core-2.0b4.jar"/>
 	<classpathentry kind="lib" path="testlib/cglib-2.1_3-src.jar"/>
 	<classpathentry kind="lib" path="testlib/cglib-nodep-2.1_3.jar"/>
@@ -34,5 +33,6 @@
 	<classpathentry kind="lib" path="testlib/jmock-legacy-2.5.1.jar"/>
 	<classpathentry kind="lib" path="testlib/jmock-script-2.5.1.jar"/>
 	<classpathentry kind="lib" path="testlib/objenesis-1.0.jar"/>
+	<classpathentry kind="lib" path="depend/egit/jgit.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

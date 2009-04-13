@@ -2,19 +2,27 @@
 <project name="project" default="compile">
 
 	<property name="build.dir" value="build" />
+	<property name="jgit.dir" value="depend/egit" />
 
 	<path id="build.classpath">
 		<fileset dir="lib">
 			<include name="*.jar" />
 		</fileset>
+		<filelist>
+			<file name="${jgit.dir}/jgit.jar"/>
+	  </filelist>
 	</path>
 
 	<target name="clean">
 		<delete dir="${build.dir}" failonerror="false" />
 		<mkdir dir="${build.dir}" />
 	</target>
+	
+	<target name="build.jgit">
+		<exec dir="${jgit.dir}" command="sh make_jgit.sh" />
+	</target>
 
-	<target name="compile" depends="clean">
+	<target name="compile" depends="clean, build.jgit">
 		<mkdir dir="${build.dir}" />
 		<javac destdir="${build.dir}" classpathref="build.classpath">
 			<src path="src/main/java" />
