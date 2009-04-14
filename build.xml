@@ -58,8 +58,7 @@
 		</copy>
 	</target>
 
-	<target name="test.jgit">
-		<!-- depends="build.jgit, build.jgit.tests"> -->
+	<target name="test.jgit" depends="build.jgit, build.jgit.tests">
     <junit printsummary="withOutAndErr" 
     			 haltonfailure="true" 
     	     includeAntRuntime="yes" 
