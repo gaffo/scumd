@@ -7,6 +7,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="depend/egit/org.spearce.jgit.test/tst"/>
 	<classpathentry kind="src" path="depend/egit/org.spearce.jgit.test/tst-rsrc"/>
+	<classpathentry kind="src" path="depend/minasshd/junit/java"/>
+	<classpathentry kind="src" path="depend/egit/org.spearce.jgit.pgm/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/commons-io-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/aopalliance-1.0.jar"/>
@@ -16,7 +18,6 @@
 	<classpathentry kind="lib" path="lib/jline-0.9.94.jar"/>
 	<classpathentry kind="lib" path="lib/jpam-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/jsch-0.1.40.jar"/>
-	<classpathentry kind="lib" path="lib/junit-4.4.jar"/>
 	<classpathentry kind="lib" path="lib/jzlib-1.0.7.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.13.jar"/>
 	<classpathentry kind="lib" path="lib/mina-core-2.0.0-M4.jar"/>
@@ -39,5 +40,7 @@
 	<classpathentry kind="lib" path="depend/egit/org.spearce.jgit/lib/jsch-0.1.37.jar"/>
 	<classpathentry kind="lib" path="depend/lib/jgit.jar"/>
 	<classpathentry kind="lib" path="depend/lib/minasshd.jar"/>
+	<classpathentry kind="lib" path="depend/egit/org.spearce.jgit.pgm/lib/args4j-2.0.9.jar"/>
+	<classpathentry kind="lib" path="testlib/junit-4.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

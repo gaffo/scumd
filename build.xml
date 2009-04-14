@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="project" default="build.scumd">
 
-	<property name="build.dir" value="build" />
 	<property name="depend.lib.dir" value="depend/lib" />
 	<property name="lib.dir" value="lib" />
 
 	<property name="jgit.dir" value="depend/egit" />
-	<property name="jgit.build.dir" value="jgit.build" />
-	<property name="jgit.test.build.dir" value="jgit.test.build" />
+	<property name="jgit.build.dir" value="build/jgit/srcbuild" />
+	<property name="jgit.test.build.dir" value="build/jgit/test/build" />
 	<property name="jgit.src.dir" value="${jgit.dir}/org.spearce.jgit/src" />
 	<property name="jgit.test.src.dir" value="${jgit.dir}/org.spearce.jgit.test/tst"/>
 
 	<property name="minasshd.dir" value="depend/minasshd" />
-	<property name="minasshd.build.dir" value="minasshd.build" />
-	<property name="minasshd.test.build.dir" value="minasshd.test.build" />
+	<property name="minasshd.build.dir" value="build/minasshd/srcbuild" />
+	<property name="minasshd.test.build.dir" value="build/minasshd/testbuild" />
 
 	<property name="scumd.src.dir" value="src" />
-
-	<target name="clean">
-		<delete dir="${build.dir}" failonerror="false" />
-		<mkdir dir="${build.dir}" />
-	</target>
+	<property name="scumd.test.src.dir" value="junit" />
+	<property name="scumd.build.dir" value="build/scumd/srcbuild" />
+	<property name="scumd.test.build.dir" value="build/scumd/testbuild" />
+	<property name="scumd.resource.dir" value="resource" />
+	
+	<!-- test libs -->
+	<path id="testlibs.classpath">
+		<fileset dir="testlib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
 
 	<!-- jgit -->
 	<target name="jgit.clean">
@@ -46,9 +51,7 @@
 			     srcdir="${jgit.test.src.dir}">
 			<classpath>
 				<pathelement path="${jgit.build.dir}" />
-				<filelist>
-					<file name="${lib.dir}/junit-4.4.jar" />
-				</filelist>
+				<path refid="testlibs.classpath" />
 			</classpath>
 		</javac>
 		<copy todir="${jgit.test.build.dir}">
@@ -70,11 +73,9 @@
 			<classpath>
 				<pathelement path="${jgit.build.dir}" />
 				<pathelement path="${jgit.test.build.dir}" />
-				<filelist>
-					<file name="${lib.dir}/junit-4.4.jar" />
-				</filelist>
+				<path refid="testlibs.classpath" />
+				<path refid="jgit.build.classpath" />
 			</classpath>
-    	<classpath refid="jgit.build.classpath" />
 
     	<formatter type="plain" />
     	
@@ -129,6 +130,13 @@
 
 	<!-- scumd -->
 	<target name="rebuild.dependencies" depends="jgit.jar, minasshd.jar" />
+	
+	<target name="clean">
+		<delete dir="${scumd.build.dir}" failonerror="false" />
+		<delete dir="${scumd.test.build.dir}" failonerror="false" />
+		<mkdir dir="${scumd.build.dir}" />
+		<mkdir dir="${scumd.test.build.dir}" />
+	</target>
 
 	<path id="scumd.build.classpath">
 		<fileset dir="${lib.dir}">
@@ -139,18 +147,53 @@
 		</fileset>
 	</path>
 
-	<target name="build.scumd">
-		<javac destdir="${build.dir}" classpathref="scumd.build.classpath" srcdir="${scumd.src.dir}">
+	<target name="build.scumd" depends="clean">
+		<javac destdir="${scumd.build.dir}" classpathref="scumd.build.classpath" srcdir="${scumd.src.dir}">
 		</javac>
 	</target>
 
 	<target name="resources" depends="clean">
-		<copy todir="${build.dir}">
-			<fileset dir="dir" id="id">
+		<copy todir="${scumd.build.dir}">
+			<fileset dir="${scumd.resource.dir}">
 				<exclude name="**.java" />
 			</fileset>
 		</copy>
 	</target>
+	
+	<target name="build.scumd.test" depends="build.scumd, resources">
+		<javac destdir="${scumd.test.build.dir}" srcdir="${scumd.test.src.dir}">
+			<classpath>
+				<pathelement path="${scumd.build.dir}" />
+				<path refid="scumd.build.classpath" />
+				<path refid="testlibs.classpath" />
+			</classpath>
+		</javac>
+	</target>
+	
+	<target name="scumd.test" depends="build.scumd.test">
+    <junit printsummary="withOutAndErr" 
+    			 haltonfailure="true" 
+    	     includeAntRuntime="yes" 
+    	     showoutput="true" 
+    	     fork="true" 
+    	     maxmemory="128M">
+			<classpath>
+				<pathelement path="${scumd.build.dir}" />
+				<pathelement path="${scumd.test.build.dir}" />
+				<path refid="testlibs.classpath" />
+				<path refid="scumd.build.classpath" />
+			</classpath>
+
+    	<formatter type="plain" />
+    	
+      <batchtest todir="testoutput">
+        <fileset dir="${scumd.test.src.dir}">
+          <include name="**/*Test.java" />
+        </fileset>
+      </batchtest>
+    </junit>
+	</target>
+	
 	<!-- 
 	<target name="run" depends="compile, resources">
 		<java classname="com.asolutions.scmsshd.Main" >
@@ -158,7 +201,7 @@
 				<fileset dir="lib">
 					<include name="*.jar" />
 				</fileset>
-				<fileset dir="${build.dir}">
+				<fileset dir="${scumd.build.dir}">
 					<include name="*" />
 				</fileset>
 			</classpath>
