@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="appsrc"/>
 	<classpathentry kind="src" path="resource"/>
 	<classpathentry kind="src" path="depend/minasshd/src"/>
 	<classpathentry kind="src" path="junit"/>
-	<classpathentry kind="src" path="depend/egit/org.spearce.jgit"/>
-	<classpathentry kind="src" path="depend/egit/org.spearce.jgit.pgm"/>
-	<classpathentry kind="src" path="depend/egit/org.spearce.jgit.test"/>
+	<classpathentry kind="src" path="depend/egit/org.spearce.jgit/src"/>
+	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/commons-io-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/aopalliance-1.0.jar"/>
@@ -37,5 +35,6 @@
 	<classpathentry kind="lib" path="testlib/jmock-script-2.5.1.jar"/>
 	<classpathentry kind="lib" path="testlib/objenesis-1.0.jar"/>
 	<classpathentry kind="lib" path="depend/egit/jgit.jar"/>
+	<classpathentry kind="lib" path="depend/egit/org.spearce.jgit/lib/jsch-0.1.37.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

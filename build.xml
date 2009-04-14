@@ -6,55 +6,17 @@
 	<property name="jgit.dir" value="depend/egit" />
 	
 	<property name="minasshd.dir" value="depend/minasshd" />
-	
-	<path id="minasshd.src.path">
-		<fileset dir="${minasshd.dir}/src">
-			<include name="*" />
-		</fileset>
-	</path>
-	
-	<path id="minasshd.test.src.path">
-		<fileset dir="${minasshd.dir}/junit">
-			<include name="*" />
-		</fileset>
-	</path>
-	
-	<path id="jgit.src.path">
-		<fileset dir="${jgit.dir}/org.spearce.jgit">
-			<include name="*" />
-		</fileset>
-		<fileset dir="${jgit.dir}/org.spearce.jgit.pgm">
-			<include name="*" />
-		</fileset>
-	</path>
-	
-	<path id="jgit.test.src.path">
-		<fileset dir="${jgit.dir}/org.spearce.jgit.test">
-			<include name="*" />
-		</fileset>
-	</path>
-	
-	<path id="scumd.src.path">
-		<fileset dir="src">
-			<include name="*" />
-		</fileset>
-	</path>
-	
-	<path id="scumd.test.src.path">
-		<fileset dir="junit">
-			<include name="*" />
-		</fileset>
-	</path>
-	
 
-
+	<property name="scumd.src.dir" value="src" />
+	
 	<path id="build.classpath">
 		<fileset dir="lib">
 			<include name="*.jar" />
 		</fileset>
-		<filelist>
-			<file name="${jgit.dir}/jgit.jar"/>
-	  </filelist>
+		<fileset dir="${jgit.dir}/org.spearce.jgit/lib">
+			<include name="*.jar" />
+		</fileset>
+		<pathelement path="${build.dir}" />
 	</path>
 
 	<target name="clean">
@@ -63,14 +25,23 @@
 	</target>
 	
 	<target name="build.jgit">
-		<exec dir="${jgit.dir}" command="sh make_jgit.sh" />
+		<javac destdir="${build.dir}" 
+					 classpathref="build.classpath"
+					 srcdir="${jgit.dir}/org.spearce.jgit/src" />
 	</target>
+	
+	<target name="build.minasshd">
+		<javac destdir="${build.dir}" 
+					 classpathref="build.classpath"
+					 srcdir="${minasshd.dir}/src" />
+	</target>
+	
+	<target name="build.dependencies" depends="build.jgit, build.minasshd"/>
 
-	<target name="compile" depends="clean, build.jgit">
-		<mkdir dir="${build.dir}" />
-		<javac destdir="${build.dir}" classpathref="build.classpath">
-			<src refid="${minasshd.src.dir}" />
-			<src path="appsrc" />
+	<target name="compile" depends="build.dependencies">
+		<javac destdir="${build.dir}" 
+					 classpathref="build.classpath"
+					 srcdir="${scumd.src.dir}">
 		</javac>
 	</target>
 	
