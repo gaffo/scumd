@@ -14,11 +14,13 @@
 	<property name="minasshd.build.dir" value="build/minasshd/srcbuild" />
 	<property name="minasshd.test.build.dir" value="build/minasshd/testbuild" />
 
-	<property name="scumd.src.dir" value="src" />
-	<property name="scumd.test.src.dir" value="junit" />
+	<property name="scumd.src.dir" value="src/main/java" />
+	<property name="scumd.test.src.dir" value="src/test/java" />
+	<property name="scumd.exttest.src.dir" value="src/exttest/java" />
 	<property name="scumd.build.dir" value="build/scumd/srcbuild" />
 	<property name="scumd.test.build.dir" value="build/scumd/testbuild" />
-	<property name="scumd.resource.dir" value="resource" />
+	<property name="scumd.exttest.build.dir" value="build/scumd/exttestbuild" />
+	<property name="scumd.resource.dir" value="src/main/resources" />
 	
 	<!-- test libs -->
 	<path id="testlibs.classpath">
@@ -134,8 +136,10 @@
 	<target name="clean">
 		<delete dir="${scumd.build.dir}" failonerror="false" />
 		<delete dir="${scumd.test.build.dir}" failonerror="false" />
+		<delete dir="${scumd.exttest.build.dir}" failonerror="false" />
 		<mkdir dir="${scumd.build.dir}" />
 		<mkdir dir="${scumd.test.build.dir}" />
+		<mkdir dir="${scumd.exttest.build.dir}" />
 	</target>
 
 	<path id="scumd.build.classpath">
@@ -188,6 +192,41 @@
     	
       <batchtest todir="testoutput">
         <fileset dir="${scumd.test.src.dir}">
+          <include name="**/*Test.java" />
+        </fileset>
+      </batchtest>
+    </junit>
+	</target>
+	
+
+	<target name="build.scumd.exttest" depends="build.scumd, resources">
+		<javac destdir="${scumd.exttest.build.dir}" srcdir="${scumd.exttest.src.dir}">
+			<classpath>
+				<pathelement path="${scumd.build.dir}" />
+				<path refid="scumd.build.classpath" />
+				<path refid="testlibs.classpath" />
+			</classpath>
+		</javac>
+	</target>
+	
+	<target name="scumd.exttest" depends="build.scumd.exttest">
+    <junit printsummary="withOutAndErr" 
+    			 haltonfailure="true" 
+    	     includeAntRuntime="yes" 
+    	     showoutput="true" 
+    	     fork="true" 
+    	     maxmemory="128M">
+			<classpath>
+				<pathelement path="${scumd.build.dir}" />
+				<pathelement path="${scumd.exttest.build.dir}" />
+				<path refid="testlibs.classpath" />
+				<path refid="scumd.build.classpath" />
+			</classpath>
+
+    	<formatter type="plain" />
+    	
+      <batchtest todir="testoutput">
+        <fileset dir="${scumd.exttest.src.dir}">
           <include name="**/*Test.java" />
         </fileset>
       </batchtest>
