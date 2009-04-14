@@ -23,7 +23,7 @@
 	</target>
 
 	<!-- jgit -->
-	<target name="clean.jgit">
+	<target name="jgit.clean">
 		<delete dir="${jgit.build.dir}" failonerror="false" />
 		<delete dir="${jgit.test.build.dir}" failonerror="false" />
 		<mkdir dir="${jgit.build.dir}" />
@@ -36,11 +36,11 @@
 		</fileset>
 	</path>
 
-	<target name="build.jgit" depends="clean.jgit">
+	<target name="jgit.build" depends="jgit.clean">
 		<javac destdir="${jgit.build.dir}" classpathref="jgit.build.classpath" srcdir="${jgit.src.dir}" />
 	</target>
 
-	<target name="build.jgit.tests" depends="clean.jgit">
+	<target name="jgit.build.test" depends="jgit.clean">
 		<javac destdir="${jgit.test.build.dir}" 
 					 classpathref="jgit.build.classpath" 
 			     srcdir="${jgit.test.src.dir}">
@@ -58,7 +58,7 @@
 		</copy>
 	</target>
 
-	<target name="test.jgit" depends="build.jgit, build.jgit.tests">
+	<target name="jgit.test" depends="jgit.build, jgit.build.test">
     <junit printsummary="withOutAndErr" 
     			 haltonfailure="true" 
     	     includeAntRuntime="yes" 
@@ -87,17 +87,17 @@
     </junit>
 	</target>
 
-	<target name="jar.jgit" depends="test.jgit">
+	<target name="jgit.jar" depends="jgit.test">
 		<jar destfile="${depend.lib.dir}/jgit.jar">
 			<fileset dir="${jgit.build.dir}">
 				<include name="**" />
 			</fileset>
 		</jar>
-		<antcall target="clean.jgit" />
+		<antcall target="jgit.clean" />
 	</target>
 
 	<!-- minasshd -->
-	<target name="clean.minasshd">
+	<target name="minasshd.clean">
 		<delete dir="${minasshd.build.dir}" failonerror="false" />
 		<delete dir="${minasshd.test.build.dir}" failonerror="false" />
 		<mkdir dir="${minasshd.build.dir}" />
@@ -110,25 +110,25 @@
 		</fileset>
 	</path>
 
-	<target name="build.minasshd" depends="clean.minasshd">
+	<target name="minasshd.build" depends="minasshd.clean">
 		<javac destdir="${minasshd.build.dir}" classpathref="minasshd.build.classpath" srcdir="${minasshd.dir}/src" />
 	</target>
 
-	<target name="test.minasshd" depends="build.minasshd">
+	<target name="minasshd.test" depends="minasshd.build">
 
 	</target>
 
-	<target name="jar.minasshd" depends="test.minasshd">
+	<target name="minasshd.jar" depends="minasshd.test">
 		<jar destfile="${depend.lib.dir}/minasshd.jar">
 			<fileset dir="${minasshd.build.dir}">
 				<include name="**" />
 			</fileset>
 		</jar>
-		<antcall target="clean.minasshd" />
+		<antcall target="minasshd.clean" />
 	</target>
 
 	<!-- scumd -->
-	<target name="rebuild.dependencies" depends="jar.jgit, jar.minasshd" />
+	<target name="rebuild.dependencies" depends="jgit.jar, minasshd.jar" />
 
 	<path id="scumd.build.classpath">
 		<fileset dir="${lib.dir}">
