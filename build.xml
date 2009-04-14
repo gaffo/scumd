@@ -75,12 +75,14 @@
 					<file name="${lib.dir}/junit-4.4.jar" />
 				</filelist>
 			</classpath>
+    	<classpath refid="jgit.build.classpath" />
+
+    	<formatter type="plain" />
     	
-      <formatter type="plain" />
-    	
-      <batchtest>
+      <batchtest todir="testoutput">
         <fileset dir="${jgit.test.src.dir}">
           <include name="**/*Test.java" />
+        	<exclude name="**/PackIndexTest.java" />
         </fileset>
       </batchtest>
     </junit>
