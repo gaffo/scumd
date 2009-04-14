@@ -1,46 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="project" default="compile">
+<project name="project" default="build.scumd">
 
 	<property name="build.dir" value="build" />
+	<property name="depend.lib.dir" value="depend/lib" />
 	
 	<property name="jgit.dir" value="depend/egit" />
+	<property name="jgit.build.dir" value="jgit.build" />
 	
 	<property name="minasshd.dir" value="depend/minasshd" />
+	<property name="minasshd.build.dir" value="minasshd.build" />
 
 	<property name="scumd.src.dir" value="src" />
-	
-	<path id="build.classpath">
-		<fileset dir="lib">
-			<include name="*.jar" />
-		</fileset>
-		<fileset dir="${jgit.dir}/org.spearce.jgit/lib">
-			<include name="*.jar" />
-		</fileset>
-		<pathelement path="${build.dir}" />
-	</path>
 
 	<target name="clean">
 		<delete dir="${build.dir}" failonerror="false" />
 		<mkdir dir="${build.dir}" />
 	</target>
 	
-	<target name="build.jgit">
-		<javac destdir="${build.dir}" 
-					 classpathref="build.classpath"
+	<!-- jgit -->
+	<target name="clean.jgit">
+		<delete dir="${jgit.build.dir}" failonerror="false" />
+		<mkdir dir="${jgit.build.dir}" />
+	</target>
+
+	<path id="jgit.build.classpath">
+		<fileset dir="${jgit.dir}/org.spearce.jgit/lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="build.jgit" depends="clean.jgit">
+		<javac destdir="${jgit.build.dir}"
+					 classpathref="jgit.build.classpath"
 					 srcdir="${jgit.dir}/org.spearce.jgit/src" />
 	</target>
 	
-	<target name="build.minasshd">
-		<javac destdir="${build.dir}" 
-					 classpathref="build.classpath"
+	<target name="test.jgit" depends="build.jgit">
+		
+	</target>
+	
+	<target name="jar.jgit" depends="test.jgit">
+		<jar destfile="${depend.lib.dir}/jgit.jar">
+			<fileset dir="${jgit.build.dir}">
+    		<include name="**" />
+			</fileset>
+		</jar>
+	</target>
+	
+	<!-- minasshd -->
+	<target name="clean.minasshd">
+		<delete dir="${minasshd.build.dir}" failonerror="false" />
+		<mkdir dir="${minasshd.build.dir}" />
+	</target>
+	
+	<path id="minasshd.build.classpath">
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	
+	<target name="build.minasshd" depends="clean.minasshd">
+		<javac destdir="${minasshd.build.dir}" 
+					 classpathref="minasshd.build.classpath"
 					 srcdir="${minasshd.dir}/src" />
 	</target>
 	
-	<target name="build.dependencies" depends="build.jgit, build.minasshd"/>
+	<target name="test.minasshd" depends="build.minasshd">
+		
+	</target>
+	
+	<target name="jar.minasshd" depends="test.minasshd">
+		<jar destfile="${depend.lib.dir}/minasshd.jar">
+			<fileset dir="${minasshd.build.dir}">
+    		<include name="**" />
+			</fileset>
+		</jar>
+	</target>
+	
+	<!-- scumd -->
+	<target name="rebuild.dependencies" depends="jar.jgit, jar.minasshd"/>
 
-	<target name="compile" depends="build.dependencies">
+	<path id="scumd.build.classpath">
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${depend.lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="build.scumd">
 		<javac destdir="${build.dir}" 
-					 classpathref="build.classpath"
+					 classpathref="scumd.build.classpath"
 					 srcdir="${scumd.src.dir}">
 		</javac>
 	</target>
@@ -52,7 +103,7 @@
 			</fileset>
 		</copy>
 	</target>
-
+	<!-- 
 	<target name="run" depends="compile, resources">
 		<java classname="com.asolutions.scmsshd.Main" >
 			<classpath>
@@ -65,5 +116,6 @@
 			</classpath>
 		</java>
 	</target>
+	-->
 
 </project>

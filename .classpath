@@ -34,7 +34,8 @@
 	<classpathentry kind="lib" path="testlib/jmock-legacy-2.5.1.jar"/>
 	<classpathentry kind="lib" path="testlib/jmock-script-2.5.1.jar"/>
 	<classpathentry kind="lib" path="testlib/objenesis-1.0.jar"/>
-	<classpathentry kind="lib" path="depend/egit/jgit.jar"/>
 	<classpathentry kind="lib" path="depend/egit/org.spearce.jgit/lib/jsch-0.1.37.jar"/>
+	<classpathentry kind="lib" path="depend/lib/jgit.jar"/>
+	<classpathentry kind="lib" path="depend/lib/minasshd.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
