@@ -6,3 +6,4 @@ bin/*
 build
 build/*
 nohup.out
+TEST-*

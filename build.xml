@@ -3,12 +3,17 @@
 
 	<property name="build.dir" value="build" />
 	<property name="depend.lib.dir" value="depend/lib" />
-	
+	<property name="lib.dir" value="lib" />
+
 	<property name="jgit.dir" value="depend/egit" />
 	<property name="jgit.build.dir" value="jgit.build" />
-	
+	<property name="jgit.test.build.dir" value="jgit.test.build" />
+	<property name="jgit.src.dir" value="${jgit.dir}/org.spearce.jgit/src" />
+	<property name="jgit.test.src.dir" value="${jgit.dir}/org.spearce.jgit.test/tst"/>
+
 	<property name="minasshd.dir" value="depend/minasshd" />
 	<property name="minasshd.build.dir" value="minasshd.build" />
+	<property name="minasshd.test.build.dir" value="minasshd.test.build" />
 
 	<property name="scumd.src.dir" value="src" />
 
@@ -16,72 +21,116 @@
 		<delete dir="${build.dir}" failonerror="false" />
 		<mkdir dir="${build.dir}" />
 	</target>
-	
+
 	<!-- jgit -->
 	<target name="clean.jgit">
 		<delete dir="${jgit.build.dir}" failonerror="false" />
+		<delete dir="${jgit.test.build.dir}" failonerror="false" />
 		<mkdir dir="${jgit.build.dir}" />
+		<mkdir dir="${jgit.test.build.dir}" />
 	</target>
 
 	<path id="jgit.build.classpath">
 		<fileset dir="${jgit.dir}/org.spearce.jgit/lib">
-			<include name="*.jar"/>
+			<include name="*.jar" />
 		</fileset>
 	</path>
-	
+
 	<target name="build.jgit" depends="clean.jgit">
-		<javac destdir="${jgit.build.dir}"
-					 classpathref="jgit.build.classpath"
-					 srcdir="${jgit.dir}/org.spearce.jgit/src" />
+		<javac destdir="${jgit.build.dir}" classpathref="jgit.build.classpath" srcdir="${jgit.src.dir}" />
 	</target>
-	
-	<target name="test.jgit" depends="build.jgit">
-		
+
+	<target name="build.jgit.tests" depends="clean.jgit">
+		<javac destdir="${jgit.test.build.dir}" 
+					 classpathref="jgit.build.classpath" 
+			     srcdir="${jgit.test.src.dir}">
+			<classpath>
+				<pathelement path="${jgit.build.dir}" />
+				<filelist>
+					<file name="${lib.dir}/junit-4.4.jar" />
+				</filelist>
+			</classpath>
+		</javac>
+		<copy todir="${jgit.test.build.dir}">
+			<fileset dir="${jgit.dir}/org.spearce.jgit.test/tst-rsrc">
+				<include name="**" />
+			</fileset>
+		</copy>
 	</target>
-	
+
+	<target name="test.jgit">
+		<!-- depends="build.jgit, build.jgit.tests"> -->
+    <junit printsummary="withOutAndErr" 
+    			 haltonfailure="true" 
+    	     includeAntRuntime="yes" 
+    	     showoutput="true" 
+    	     fork="true" 
+    	     maxmemory="128M"
+    			 dir="${jgit.dir}">
+
+			<classpath>
+				<pathelement path="${jgit.build.dir}" />
+				<pathelement path="${jgit.test.build.dir}" />
+				<filelist>
+					<file name="${lib.dir}/junit-4.4.jar" />
+				</filelist>
+			</classpath>
+    	
+      <formatter type="plain" />
+    	
+      <batchtest>
+        <fileset dir="${jgit.test.src.dir}">
+          <include name="**/*Test.java" />
+        </fileset>
+      </batchtest>
+    </junit>
+	</target>
+
 	<target name="jar.jgit" depends="test.jgit">
 		<jar destfile="${depend.lib.dir}/jgit.jar">
 			<fileset dir="${jgit.build.dir}">
-    		<include name="**" />
+				<include name="**" />
 			</fileset>
 		</jar>
+		<antcall target="clean.jgit" />
 	</target>
-	
+
 	<!-- minasshd -->
 	<target name="clean.minasshd">
 		<delete dir="${minasshd.build.dir}" failonerror="false" />
+		<delete dir="${minasshd.test.build.dir}" failonerror="false" />
 		<mkdir dir="${minasshd.build.dir}" />
+		<mkdir dir="${minasshd.test.build.dir}" />
 	</target>
-	
+
 	<path id="minasshd.build.classpath">
 		<fileset dir="lib">
 			<include name="*.jar" />
 		</fileset>
 	</path>
-	
+
 	<target name="build.minasshd" depends="clean.minasshd">
-		<javac destdir="${minasshd.build.dir}" 
-					 classpathref="minasshd.build.classpath"
-					 srcdir="${minasshd.dir}/src" />
+		<javac destdir="${minasshd.build.dir}" classpathref="minasshd.build.classpath" srcdir="${minasshd.dir}/src" />
 	</target>
-	
+
 	<target name="test.minasshd" depends="build.minasshd">
-		
+
 	</target>
-	
+
 	<target name="jar.minasshd" depends="test.minasshd">
 		<jar destfile="${depend.lib.dir}/minasshd.jar">
 			<fileset dir="${minasshd.build.dir}">
-    		<include name="**" />
+				<include name="**" />
 			</fileset>
 		</jar>
+		<antcall target="clean.minasshd" />
 	</target>
-	
+
 	<!-- scumd -->
-	<target name="rebuild.dependencies" depends="jar.jgit, jar.minasshd"/>
+	<target name="rebuild.dependencies" depends="jar.jgit, jar.minasshd" />
 
 	<path id="scumd.build.classpath">
-		<fileset dir="lib">
+		<fileset dir="${lib.dir}">
 			<include name="*.jar" />
 		</fileset>
 		<fileset dir="${depend.lib.dir}">
@@ -90,16 +139,14 @@
 	</path>
 
 	<target name="build.scumd">
-		<javac destdir="${build.dir}" 
-					 classpathref="scumd.build.classpath"
-					 srcdir="${scumd.src.dir}">
+		<javac destdir="${build.dir}" classpathref="scumd.build.classpath" srcdir="${scumd.src.dir}">
 		</javac>
 	</target>
-	
+
 	<target name="resources" depends="clean">
 		<copy todir="${build.dir}">
 			<fileset dir="dir" id="id">
-		    <exclude name="**.java"/>
+				<exclude name="**.java" />
 			</fileset>
 		</copy>
 	</target>
