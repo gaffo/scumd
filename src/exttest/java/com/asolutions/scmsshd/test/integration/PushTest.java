@@ -16,6 +16,7 @@ import org.junit.Test;
 import org.spearce.jgit.lib.Ref;
 import org.spearce.jgit.lib.Repository;
 import org.spearce.jgit.lib.TextProgressMonitor;
+import org.spearce.jgit.transport.FetchResult;
 
 import com.asolutions.scmsshd.SCuMD;
 import com.asolutions.scmsshd.authenticators.AlwaysPassPublicKeyAuthenticator;
@@ -60,6 +61,18 @@ public class PushTest extends IntegrationTestCase {
 	}
 	
 	@Test
+	public void testRoundTrip() throws Exception {
+		File gitDir = new File(".git");
+		addRemoteConfigForLocalGitDirectory(fromRepository, toRepoDir, ORIGIN);
+		push(ORIGIN, REFSPEC, fromRepository);
+		
+		Repository db = createCloneToRepo();
+		addRemoteConfigForLocalGitDirectory(db, gitDir, ORIGIN);
+		FetchResult r = cloneFromRemote(db, ORIGIN);
+		assert(r.getTrackingRefUpdates().size() > 0);
+	}
+	
+	@Test
 	public void testPushSCuMD() throws Exception {
 		final SCuMD sshd = new SCuMD();
 		try{
@@ -95,6 +108,55 @@ public class PushTest extends IntegrationTestCase {
 			push(ORIGIN, REFSPEC, fromRepository);
 			
 			assertPushOfMaster(fromRefMaster);
+		}
+		finally{
+			sshd.stop();
+		}
+	}
+
+	@Test
+	public void testRoundTripSCuMD() throws Exception {
+		final SCuMD sshd = new SCuMD();
+		try{
+			int serverPort = generatePort();
+			
+			System.out.println("Running on port: " + serverPort);
+			sshd.setPort(serverPort);
+			sshd.setKeyPairProvider(new FileKeyPairProvider(new String[] { "src/main/resources/ssh_host_rsa_key", 
+																		   "src/main/resources/ssh_host_dsa_key" }));
+			sshd.setPublickeyAuthenticator(new AlwaysPassPublicKeyAuthenticator());
+			
+			GitCommandFactory factory = new GitCommandFactory();
+			factory.setPathToProjectNameConverter(new ConstantProjectNameConverter());
+			factory.setProjectAuthorizor(new AlwaysPassProjectAuthorizer());
+	
+	        Properties config = new Properties();
+	        config.setProperty(GitSCMCommandFactory.REPOSITORY_BASE, toRepoDir.getParent());
+	        factory.setConfiguration(config);
+	        sshd.setCommandFactory(factory);
+	        new Thread(){
+	        	@Override
+	        	public void run() {
+	        		try {
+						sshd.start();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+	        	}
+	        }.start();
+	        Thread.sleep(3000);
+			
+			addRemoteConfigForRemoteGitDirectory(fromRepository, ORIGIN, serverPort, toRepoDir.getName());
+			push(ORIGIN, REFSPEC, fromRepository);
+			
+			File gitDir = new File(".git");
+			addRemoteConfigForLocalGitDirectory(fromRepository, toRepoDir, ORIGIN);
+			push(ORIGIN, REFSPEC, fromRepository);
+			
+			Repository db = createCloneToRepo();
+			addRemoteConfigForLocalGitDirectory(db, gitDir, ORIGIN);
+			FetchResult r = cloneFromRemote(db, ORIGIN);
+			assert(r.getTrackingRefUpdates().size() > 0);
 		}
 		finally{
 			sshd.stop();
