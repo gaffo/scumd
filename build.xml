@@ -233,6 +233,8 @@
     </junit>
 	</target>
 	
+	<target name="test" depends="scumd.test, scumd.exttest" />
+	
 	<!-- 
 	<target name="run" depends="compile, resources">
 		<java classname="com.asolutions.scmsshd.Main" >
