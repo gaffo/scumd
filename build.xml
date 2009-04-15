@@ -235,19 +235,24 @@
 	
 	<target name="test" depends="scumd.test, scumd.exttest" />
 	
-	<!-- 
-	<target name="run" depends="compile, resources">
-		<java classname="com.asolutions.scmsshd.Main" >
+	<target name="run">
+		<java classname="com.asolutions.scmsshd.SCuMD" >
 			<classpath>
-				<fileset dir="lib">
-					<include name="*.jar" />
-				</fileset>
-				<fileset dir="${scumd.build.dir}">
-					<include name="*" />
-				</fileset>
+				<path refid="scumd.build.classpath" />
+				<pathelement path="${scumd.build.dir}" />
 			</classpath>
+			<arg value="config.xml" />
 		</java>
 	</target>
-	-->
+	
+	<target name="run.noauth">
+		<java classname="com.asolutions.scmsshd.SCuMD" >
+			<classpath>
+				<path refid="scumd.build.classpath" />
+				<pathelement path="${scumd.build.dir}" />
+			</classpath>
+			<arg value="noauth.xml" />
+		</java>
+	</target>
 
 </project>

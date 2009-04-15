@@ -15,8 +15,8 @@
 			<bean class="org.apache.sshd.common.keyprovider.FileKeyPairProvider">
 				<constructor-arg>
 					<list>
-						<value>src/main/resource/ssh_host_rsa_key</value>
-						<value>src/main/resource/ssh_host_dsa_key</value>
+						<value>src/main/resources/ssh_host_rsa_key</value>
+						<value>src/main/resources/ssh_host_dsa_key</value>
 					</list>
 				</constructor-arg>
 			</bean>

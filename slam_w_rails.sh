@@ -16,6 +16,6 @@ for commit in `git log --summary --reverse origin/master | grep -E "^commit" | a
 do
   echo $commit
   git cherry-pick $commit
-  git push ssh master
+  git push ssh master:master
   rm -rf .git/index.lock
 done
