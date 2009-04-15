@@ -44,7 +44,7 @@ public class FetchTest extends IntegrationTestCase {
 			sshd.setPublickeyAuthenticator(new AlwaysPassPublicKeyAuthenticator());
 			
 			GitCommandFactory factory = new GitCommandFactory();
-			factory.setPathToProjectNameConverter(new ConstantProjectNameConverter(".git"));
+			factory.setPathToProjectNameConverter(new ConstantProjectNameConverter());
 			factory.setProjectAuthorizor(new AlwaysPassProjectAuthorizer());
 	
 	        Properties config = new Properties();
@@ -66,7 +66,7 @@ public class FetchTest extends IntegrationTestCase {
 			Repository db = createCloneToRepo();
 			String remoteName = "origin";
 			File gitDir = new File(".git");
-			addRemoteConfigForRemoteGitDirectory(db, gitDir, remoteName, serverPort);
+			addRemoteConfigForRemoteGitDirectory(db, remoteName, serverPort, ".git");
 			FetchResult r = cloneFromRemote(db, remoteName);
 			System.out.println("results = " + r.getTrackingRefUpdates().size());
 			assertTrue(r.getTrackingRefUpdates().size() > 0);

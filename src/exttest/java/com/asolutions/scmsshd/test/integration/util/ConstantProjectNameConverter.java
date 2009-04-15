@@ -6,14 +6,11 @@ import com.asolutions.scmsshd.sshd.UnparsableProjectException;
 public class ConstantProjectNameConverter implements
 		IPathToProjectNameConverter {
 
-	private String pathName;
-
-	public ConstantProjectNameConverter(String pathName) {
-		this.pathName = pathName;
+	public ConstantProjectNameConverter() {
 	}
 
 	public String convert(String toParse) throws UnparsableProjectException {
-		return pathName;
+		return "constant";
 	}
 
 }
