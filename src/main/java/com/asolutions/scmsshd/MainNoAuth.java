@@ -43,12 +43,10 @@ public class MainNoAuth {
         
 		sshd.setPublickeyAuthenticator(new AlwaysFailPublicKeyAuthenticator());
 
-		sshd.setKeyPairProvider(new FileKeyPairProvider(new String[] { "resource/ssh_host_rsa_key", "resource/ssh_host_dsa_key" }));
+		sshd.setKeyPairProvider(new FileKeyPairProvider(new String[] { "src/main/resources/ssh_host_rsa_key", "src/main/resources/ssh_host_dsa_key" }));
 		
 	    sshd.setCompressionFactories(Arrays.<NamedFactory<Compression>>asList(
-	             new CompressionNone.Factory(),
-	             new CompressionZlib.Factory(),
-	             new CompressionDelayedZlib.Factory()));
+	             new CompressionNone.Factory()));
 		
 	    try{
 	    	sshd.start();

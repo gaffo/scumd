@@ -10,6 +10,7 @@ import org.junit.After;
 public class IntegrationTestCase {
 
 	private ArrayList<File> scratchDirs = new ArrayList<File>();
+	private static int port = (int) (10000 + (Math.random() * 20000));
 
 	public IntegrationTestCase() {
 		super();
@@ -27,6 +28,10 @@ public class IntegrationTestCase {
 		File scratchDir = new File(basedir, "scumd-test-" + System.currentTimeMillis());
 		scratchDirs.add(scratchDir);
 		return scratchDir;
+	}
+
+	protected int generatePort() {
+		return port++;
 	}
 
 }
