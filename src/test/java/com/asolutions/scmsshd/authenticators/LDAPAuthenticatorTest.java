@@ -3,6 +3,7 @@ package com.asolutions.scmsshd.authenticators;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import org.apache.sshd.server.session.ServerSession;
 import org.jmock.Expectations;
 import org.junit.Test;
 
@@ -21,7 +22,7 @@ public class LDAPAuthenticatorTest extends MockTestCase {
 	@Test
 	public void testAuthenticatePassesWithNoException() throws Exception {
 		final ILDAPAuthLookupProvider mockAuthLookupProvider = context.mock(ILDAPAuthLookupProvider.class);
-		
+		final ServerSession mockServerSession = context.mock(ServerSession.class);
 		checking(new Expectations(){{
 			oneOf(mockAuthLookupProvider).provide(URL, USERDN, PASSWORD, true);
 			will(returnValue("hi"));
@@ -29,12 +30,13 @@ public class LDAPAuthenticatorTest extends MockTestCase {
 		
 		LDAPAuthenticator auth = new LDAPAuthenticator(URL, USERBASE, true, mockAuthLookupProvider);
 		
-		assertNotNull(auth.authenticate(USERNAME, PASSWORD));
+		assertNotNull(auth.authenticate(USERNAME, PASSWORD, mockServerSession));
 	}
 	
 	@Test
 	public void testAuthenticateFailsNull() throws Exception {
 		final ILDAPAuthLookupProvider mockAuthLookupProvider = context.mock(ILDAPAuthLookupProvider.class);
+		final ServerSession mockServerSession = context.mock(ServerSession.class);
 		
 		checking(new Expectations(){{
 			oneOf(mockAuthLookupProvider).provide(URL, USERDN, PASSWORD, true);
@@ -43,7 +45,7 @@ public class LDAPAuthenticatorTest extends MockTestCase {
 		
 		LDAPAuthenticator auth = new LDAPAuthenticator("ldaps://server.lan", USERBASE, true, mockAuthLookupProvider);
 		
-		assertNull(auth.authenticate(USERNAME, PASSWORD));
+		assertNull(auth.authenticate(USERNAME, PASSWORD, mockServerSession));
 	}
 
 }

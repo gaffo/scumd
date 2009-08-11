@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
 
+import org.apache.sshd.server.session.ServerSession;
 import org.jmock.Expectations;
 import org.junit.Test;
 
@@ -18,7 +19,8 @@ public class PassIfAnyInCollectionPassAuthenticatorTest extends MockTestCase {
 	
 	@Test
 	public void testFailsWithNothingInChain() throws Exception {
-		assertNull(new PassIfAnyInCollectionPassAuthenticator().authenticate(USERNAME, PASSWORD));
+		final ServerSession mockServerSession = context.mock(ServerSession.class);
+		assertNull(new PassIfAnyInCollectionPassAuthenticator().authenticate(USERNAME, PASSWORD, mockServerSession));
 	}
 	
 	@Test
@@ -26,11 +28,12 @@ public class PassIfAnyInCollectionPassAuthenticatorTest extends MockTestCase {
 
 		final IPasswordAuthenticator failsAuth = context.mock(IPasswordAuthenticator.class, "failsAuth");
 		final IPasswordAuthenticator passesAuth = context.mock(IPasswordAuthenticator.class, "passesAuth");
+		final ServerSession mockServerSession = context.mock(ServerSession.class);
 		
 		checking(new Expectations(){{
-			allowing(failsAuth).authenticate(USERNAME, PASSWORD);
+			allowing(failsAuth).authenticate(USERNAME, PASSWORD, mockServerSession);
 			will(returnValue(null));
-			allowing(passesAuth).authenticate(USERNAME, PASSWORD);
+			allowing(passesAuth).authenticate(USERNAME, PASSWORD, mockServerSession);
 			will(returnValue(true));
 		}});
 		
@@ -40,15 +43,16 @@ public class PassIfAnyInCollectionPassAuthenticatorTest extends MockTestCase {
 		authList.add(passesAuth);
 		authList.add(failsAuth);
 		auth.setAuthenticators(authList);
-		assertNotNull(auth.authenticate(USERNAME, PASSWORD));
+		assertNotNull(auth.authenticate(USERNAME, PASSWORD, mockServerSession));
 	}
 	
 	@Test
 	public void testFailIfNonePass() throws Exception {
 		final IPasswordAuthenticator failsAuth = context.mock(IPasswordAuthenticator.class, "failsAuth");
+		final ServerSession mockServerSession = context.mock(ServerSession.class);
 		
 		checking(new Expectations(){{
-			allowing(failsAuth).authenticate(USERNAME, PASSWORD);
+			allowing(failsAuth).authenticate(USERNAME, PASSWORD, mockServerSession);
 			will(returnValue(null));
 		}});
 		
@@ -57,7 +61,7 @@ public class PassIfAnyInCollectionPassAuthenticatorTest extends MockTestCase {
 		authList.add(failsAuth);
 		authList.add(failsAuth);
 		auth.setAuthenticators(authList);
-		assertNull(auth.authenticate(USERNAME, PASSWORD));
+		assertNull(auth.authenticate(USERNAME, PASSWORD, mockServerSession));
 	}
 
 }
