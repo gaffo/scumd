@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/compression
+END
+CompressionNone.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/compression/CompressionNone.java
+END
+CompressionZlib.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/compression/CompressionZlib.java
+END
+CompressionDelayedZlib.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/compression/CompressionDelayedZlib.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/repos/asf/!svn/ver/766554/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/compression/package.html
+END

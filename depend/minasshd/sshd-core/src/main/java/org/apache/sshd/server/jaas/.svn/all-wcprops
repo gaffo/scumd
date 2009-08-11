@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/repos/asf/!svn/ver/798048/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/jaas
+END
+JaasPasswordAuthenticator.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/repos/asf/!svn/ver/798048/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/jaas/JaasPasswordAuthenticator.java
+END

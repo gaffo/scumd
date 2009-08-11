@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/cipher
+END
+TripleDESCBC.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/cipher/TripleDESCBC.java
+END
+BaseCipher.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/cipher/BaseCipher.java
+END
+BlowfishCBC.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/cipher/BlowfishCBC.java
+END
+CipherNone.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/cipher/CipherNone.java
+END
+AES128CBC.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/cipher/AES128CBC.java
+END
+AES192CBC.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/cipher/AES192CBC.java
+END
+AES256CBC.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/cipher/AES256CBC.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/asf/!svn/ver/766554/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/cipher/package.html
+END

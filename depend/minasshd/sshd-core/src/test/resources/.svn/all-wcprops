@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/asf/!svn/ver/766554/mina/sshd/trunk/sshd-core/src/test/resources
+END
+dsaprivkey.pem
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/asf/!svn/ver/766554/mina/sshd/trunk/sshd-core/src/test/resources/dsaprivkey.pem
+END
+spring.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/asf/!svn/ver/766554/mina/sshd/trunk/sshd-core/src/test/resources/spring.xml
+END
+hostkey.pem
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/asf/!svn/ver/766554/mina/sshd/trunk/sshd-core/src/test/resources/hostkey.pem
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/repos/asf/!svn/ver/766554/mina/sshd/trunk/sshd-core/src/test/resources/log4j.properties
+END

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/digest
+END
+MD5.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/digest/MD5.java
+END
+BaseDigest.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/digest/BaseDigest.java
+END
+SHA1.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/digest/SHA1.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/asf/!svn/ver/766554/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/common/digest/package.html
+END

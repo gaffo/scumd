@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/asf/!svn/ver/783375/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/keyprovider
+END
+SimpleGeneratorHostKeyProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/repos/asf/!svn/ver/783375/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/keyprovider/SimpleGeneratorHostKeyProvider.java
+END
+PEMGeneratorHostKeyProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/repos/asf/!svn/ver/783375/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/keyprovider/PEMGeneratorHostKeyProvider.java
+END
+AbstractGeneratorHostKeyProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/repos/asf/!svn/ver/783375/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/keyprovider/AbstractGeneratorHostKeyProvider.java
+END

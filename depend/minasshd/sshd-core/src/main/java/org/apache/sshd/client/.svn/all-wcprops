@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/asf/!svn/ver/798066/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/client
+END
+UserAuth.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/client/UserAuth.java
+END
+SessionFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/asf/!svn/ver/766554/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/client/SessionFactory.java
+END

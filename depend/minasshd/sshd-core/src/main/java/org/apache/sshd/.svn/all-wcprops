@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/asf/!svn/ver/798139/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd
+END
+ClientSession.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/ClientSession.java
+END
+SshServer.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/repos/asf/!svn/ver/798048/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/SshServer.java
+END
+ClientChannel.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/asf/!svn/ver/782686/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/ClientChannel.java
+END
+SshClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/repos/asf/!svn/ver/782686/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/SshClient.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/asf/!svn/ver/766554/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/package.html
+END

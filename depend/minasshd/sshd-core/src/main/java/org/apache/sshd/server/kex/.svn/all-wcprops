@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/repos/asf/!svn/ver/782565/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/kex
+END
+DHG1.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/repos/asf/!svn/ver/782565/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/kex/DHG1.java
+END
+DHG14.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/asf/!svn/ver/782565/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/kex/DHG14.java
+END
+AbstractDHGServer.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/kex/AbstractDHGServer.java
+END

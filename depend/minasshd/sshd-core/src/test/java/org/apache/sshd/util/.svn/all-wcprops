@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/asf/!svn/ver/798048/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/util
+END
+Compression.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/util/Compression.java
+END
+BogusPublickeyAuthenticator.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/util/BogusPublickeyAuthenticator.java
+END
+TeePipedOutputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/util/TeePipedOutputStream.java
+END
+BogusPasswordAuthenticator.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/repos/asf/!svn/ver/798048/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/util/BogusPasswordAuthenticator.java
+END
+EchoShellFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/asf/!svn/ver/782548/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/util/EchoShellFactory.java
+END

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/asf/!svn/ver/798139/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server
+END
+ServerChannel.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/ServerChannel.java
+END
+ShellFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/repos/asf/!svn/ver/798048/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/ShellFactory.java
+END
+Signals.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/repos/asf/!svn/ver/782548/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/Signals.java
+END
+UserAuth.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/UserAuth.java
+END
+PublickeyAuthenticator.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/PublickeyAuthenticator.java
+END
+CommandFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/CommandFactory.java
+END
+ServerFactoryManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/ServerFactoryManager.java
+END
+SessionFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/asf/!svn/ver/766554/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/SessionFactory.java
+END
+PasswordAuthenticator.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/asf/!svn/ver/798048/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/PasswordAuthenticator.java
+END

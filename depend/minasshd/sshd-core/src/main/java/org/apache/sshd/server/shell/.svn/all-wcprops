@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/asf/!svn/ver/782548/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/shell
+END
+InvertedShell.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/shell/InvertedShell.java
+END
+InvertedShellWrapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/repos/asf/!svn/ver/782548/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/shell/InvertedShellWrapper.java
+END
+ProcessShellFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/main/java/org/apache/sshd/server/shell/ProcessShellFactory.java
+END

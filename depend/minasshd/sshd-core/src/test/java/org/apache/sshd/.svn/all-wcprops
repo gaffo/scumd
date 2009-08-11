@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/asf/!svn/ver/798048/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd
+END
+LoadTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/repos/asf/!svn/ver/784086/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/LoadTest.java
+END
+RandomTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/RandomTest.java
+END
+CompressionTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/CompressionTest.java
+END
+ScpTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/ScpTest.java
+END
+ServerTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/repos/asf/!svn/ver/782686/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/ServerTest.java
+END
+AbstractSessionTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/AbstractSessionTest.java
+END
+TestSpringConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/TestSpringConfig.java
+END
+CipherTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/CipherTest.java
+END
+ClientTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/repos/asf/!svn/ver/773859/mina/sshd/trunk/sshd-core/src/test/java/org/apache/sshd/ClientTest.java
+END
