@@ -174,7 +174,7 @@ public class IntegrationTestCase {
 			throws NotSupportedException, URISyntaxException,
 			TransportException {
 		Transport tn = Transport.open(db, remoteName);
-		FetchResult r = tn.fetch(new NullProgressMonitor(), null);
+		FetchResult r = tn.fetch(NullProgressMonitor.INSTANCE, null);
 		showFetchResult(tn, r, System.out, db);
 		return r;
 	}
@@ -216,7 +216,7 @@ public class IntegrationTestCase {
 			final URIish uri = transport.getURI();
 			final PushResult result;
 			try {
-				result = transport.push(new NullProgressMonitor(), toPush);
+				result = transport.push(NullProgressMonitor.INSTANCE, toPush);
 			} finally {
 				transport.close();
 			}
