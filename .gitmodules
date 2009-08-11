@@ -1,3 +1,3 @@
-[submodule "depend/egit"]
-	path = depend/egit
-	url = git://repo.or.cz/egit.git
+[submodule "depend/jgit"]
+	path = depend/jgit
+	url = http://repo.or.cz/r/jgit.git

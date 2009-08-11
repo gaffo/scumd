@@ -4,7 +4,7 @@
 	<property name="depend.lib.dir" value="depend/lib" />
 	<property name="lib.dir" value="lib" />
 
-	<property name="jgit.dir" value="depend/egit" />
+	<property name="jgit.dir" value="depend/jgit" />
 	<property name="jgit.build.dir" value="build/jgit/srcbuild" />
 	<property name="jgit.test.build.dir" value="build/jgit/test/build" />
 	<property name="jgit.src.dir" value="${jgit.dir}/org.spearce.jgit/src" />
@@ -84,7 +84,6 @@
       <batchtest todir="testoutput">
         <fileset dir="${jgit.test.src.dir}">
           <include name="**/*Test.java" />
-        	<exclude name="**/PackIndexTest.java" />
         </fileset>
       </batchtest>
     </junit>
