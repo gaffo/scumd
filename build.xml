@@ -113,7 +113,11 @@
 	</path>
 
 	<target name="minasshd.build" depends="minasshd.clean">
-		<javac destdir="${minasshd.build.dir}" classpathref="minasshd.build.classpath" srcdir="${minasshd.dir}/src" />
+		<javac destdir="${minasshd.build.dir}" classpathref="minasshd.build.classpath">
+			<src path="${minasshd.dir}/sshd-core/src/main/java" />
+			<src path="${minasshd.dir}/sshd-core/src/main/filtered-resources" />
+			<src path="${minasshd.dir}/sshd-pam/src/main/java" />
+		</javac>
 	</target>
 
 	<target name="minasshd.test" depends="minasshd.build">
