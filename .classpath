@@ -23,7 +23,6 @@
 	<classpathentry kind="lib" path="lib/jsch-0.1.40.jar"/>
 	<classpathentry kind="lib" path="lib/jzlib-1.0.7.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.13.jar"/>
-	<classpathentry kind="lib" path="lib/mina-core-2.0.0-M4.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.5.2.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.4.3.jar"/>
 	<classpathentry kind="lib" path="lib/spring-beans-2.5.5.jar"/>
@@ -40,10 +39,9 @@
 	<classpathentry kind="lib" path="testlib/jmock-legacy-2.5.1.jar"/>
 	<classpathentry kind="lib" path="testlib/jmock-script-2.5.1.jar"/>
 	<classpathentry kind="lib" path="testlib/objenesis-1.0.jar"/>
-	<classpathentry kind="lib" path="depend/egit/org.spearce.jgit/lib/jsch-0.1.37.jar"/>
 	<classpathentry kind="lib" path="depend/lib/jgit.jar"/>
 	<classpathentry kind="lib" path="depend/lib/minasshd.jar"/>
-	<classpathentry kind="lib" path="depend/egit/org.spearce.jgit.pgm/lib/args4j-2.0.9.jar"/>
 	<classpathentry kind="lib" path="testlib/junit-4.4.jar"/>
+	<classpathentry kind="lib" path="lib/mina-core-2.0.0-M6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
