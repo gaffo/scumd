@@ -13,6 +13,7 @@ import org.apache.sshd.common.compression.CompressionNone;
 import org.apache.sshd.common.compression.CompressionZlib;
 import org.apache.sshd.common.keyprovider.FileKeyPairProvider;
 import org.apache.sshd.server.PasswordAuthenticator;
+import org.apache.sshd.server.session.ServerSession;
 
 import com.asolutions.asynchrony.customizations.AsynchronyPathToProjectNameConverter;
 import com.asolutions.scmsshd.authenticators.LDAPAuthenticator;
@@ -63,9 +64,10 @@ public class MainNoAuth {
 
 	private static void setupAuthenticators(SshServer sshd) {
 		sshd.setPasswordAuthenticator(new PasswordAuthenticator(){
-			public Object authenticate(String username, String password) {
+			public Object authenticate(String username, String password, ServerSession session) {
 				return true;
-			}});
+			}
+		});
 	}
 
 	private static void setCommandFactory(SshServer sshd, String basedir)

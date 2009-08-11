@@ -2,6 +2,7 @@ package com.asolutions.scmsshd.authenticators;
 
 import javax.naming.NamingException;
 
+import org.apache.sshd.server.session.ServerSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +28,7 @@ public class LDAPAuthenticator implements IPasswordAuthenticator {
 		this.provider = provider;
 	}
 
-	public Object authenticate(String username, String password) {
+	public Object authenticate(String username, String password, ServerSession session) {
 		username = "cn=" + username + "," + userBase;
 		try {
 			return provider.provide(url, username, password, promiscuous);
