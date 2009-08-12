@@ -1,0 +1,71 @@
+            == SCuMD ==
+
+This package is licensed under the MIT License
+
+  SCuMD
+
+   	A pure Java sshd daemon for serving up of git over the native
+   	protocol. SCuMD is based upon jgit (jgit.org) by Shawn Pearce.
+   	
+   	SCuMD has the following advantages:
+   	
+   	- Pure Java
+   	- Can run as an unprivilaged user
+   	- Does not require shell accounts
+   	- Does not require os level ssh to be exposed
+   	- Has a pluggable authentication and authorization layer which
+   	  allows easy addition of any auth mechanisms (or multiple).
+
+            == WARNINGS / CAVEATS              ==
+
+- Repository rules fall under the same rules as jgit.
+
+            == Current Features                ==
+
+Here is what is currently built into SCuMD
+
+- jgit 0.5.0 support
+- minasshd 0.1.0 support
+- spring configuration
+- multiple authenticators
+- multiple authorizers
+- LDAP authenticators
+- LDAP authorizers
+- Flat File authenticators
+- Flat File authorizers
+
+            == Missing Features                ==
+
+To be useful to many there are quite a few things that need to go in.
+Many of them are authentication /authorization extensions which are
+quite simple to add. If anyone is interested, please contact me 
+@ mr.gaffo @ gmail dot com.
+
+- Documentation :)
+- update-server-info functionality in jgit for compatibility with http repos
+- Database auth
+- Webservices auth
+
+            == Support                         ==
+
+  Post question, comments or patches to the git@vger.kernel.org mailing list
+  with the [SCuMD] tag in the subject.
+
+            == Contributing                    ==
+
+  See SUBMITTING_PATCHES in this directory. However, feedback and bug reports
+  are also contributions.
+
+            == About GIT                       ==
+
+More information about GIT, its repository format, and the canonical
+C based implementation can be obtained from the GIT websites:
+
+  http://git.or.cz/
+  http://www.kernel.org/pub/software/scm/git/
+  http://www.kernel.org/pub/software/scm/git/docs/
+
+
+			== Other							==
+			
+This file shamelessly copied from Shawn Pearce's jgit file of the same name.
