@@ -1,3 +1,4 @@
 [submodule "depend/jgit"]
 	path = depend/jgit
-	url = http://repo.or.cz/r/jgit.git
+#	url = http://repo.or.cz/r/jgit.git
+        url = http://github.com/gaffo/jgit.git

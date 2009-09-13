@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="depend/egit/org.spearce.jgit/src"/>
 	<classpathentry kind="src" path="depend/minasshd/sshd-core/src/test/resources"/>
 	<classpathentry kind="src" path="depend/minasshd/sshd-core/src/test/java"/>
 	<classpathentry kind="src" path="src/main/java"/>
@@ -37,9 +36,9 @@
 	<classpathentry kind="lib" path="testlib/jmock-legacy-2.5.1.jar"/>
 	<classpathentry kind="lib" path="testlib/jmock-script-2.5.1.jar"/>
 	<classpathentry kind="lib" path="testlib/objenesis-1.0.jar"/>
-	<classpathentry kind="lib" path="depend/lib/jgit.jar"/>
 	<classpathentry kind="lib" path="depend/lib/minasshd.jar"/>
 	<classpathentry kind="lib" path="testlib/junit-4.4.jar"/>
 	<classpathentry kind="lib" path="lib/mina-core-2.0.0-M6.jar"/>
+	<classpathentry kind="lib" path="depend/lib/jgit.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
