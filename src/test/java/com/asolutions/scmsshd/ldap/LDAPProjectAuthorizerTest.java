@@ -51,6 +51,9 @@ public class LDAPProjectAuthorizerTest extends MockTestCase {
 			
 			one(mockEnum).nextElement();
 			will(returnValue(userToCheckDN));
+			
+			one(namingProvider).getBinding(userDN, lookupUserPassword);
+			will(returnValue(mockBinding));
 		}});
 		
 		LDAPProjectAuthorizer auth = new LDAPProjectAuthorizer(userDN, 
@@ -92,6 +95,9 @@ public class LDAPProjectAuthorizerTest extends MockTestCase {
 			
 			one(mockEnum).nextElement();
 			will(returnValue(userToCheckDN));
+			
+			one(namingProvider).getBinding(userDN, lookupUserPassword);
+			will(returnValue(mockBinding));
 		}});
 		
 		LDAPProjectAuthorizer auth = new LDAPProjectAuthorizer(userDN, 
@@ -128,6 +134,9 @@ public class LDAPProjectAuthorizerTest extends MockTestCase {
 			
 			one(mockEnum).hasMoreElements();
 			will(returnValue(false));
+			
+			one(namingProvider).getBinding(userDN, lookupUserPassword);
+			will(returnValue(mockBinding));
 		}});
 		
 		LDAPProjectAuthorizer auth = new LDAPProjectAuthorizer(userDN, 

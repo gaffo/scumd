@@ -16,11 +16,11 @@ public class LDAPProjectAuthorizer implements IProjectAuthorizer {
 	protected final Logger log = LoggerFactory.getLogger(getClass());
 	private String lookupUserDN;
 	private String lookupUserPassword;
-	private InitialDirContext binding;
 	private String groupBaseDN;
 	private String userBaseDN;
 	private String groupSuffix;
 	private AuthorizationLevel authorizationLevel;
+	private IJavaxNamingProvider provider;
 
 	public LDAPProjectAuthorizer(String lookupUserDN,
 								 String lookupUserPassword, 
@@ -47,9 +47,15 @@ public class LDAPProjectAuthorizer implements IProjectAuthorizer {
 		this.groupBaseDN = groupBaseDN;
 		this.userBaseDN = userBaseDN;
 		this.groupSuffix = groupSuffix;
-		this.binding = provider.getBinding(this.lookupUserDN,
-										   this.lookupUserPassword);
+		this.provider = provider;
 		this.authorizationLevel = authorizationLevel;
+		getLdapBinding(provider);
+	}
+
+	protected InitialDirContext getLdapBinding(IJavaxNamingProvider provider)
+			throws NamingException {
+		return provider.getBinding(this.lookupUserDN,
+										   this.lookupUserPassword);
 	}
 
 	public AuthorizationLevel userIsAuthorizedForProject(String username, String group)
@@ -57,7 +63,7 @@ public class LDAPProjectAuthorizer implements IProjectAuthorizer {
 		username = getUserDN(username);
 		group = getGroupDN(group);
 		try {
-			Attributes attrs = binding.getAttributes(group);
+			Attributes attrs = getLdapBinding(provider).getAttributes(group);
 			NamingEnumeration<?> e = attrs.get("member").getAll();
 			while (e.hasMoreElements())
 			{
