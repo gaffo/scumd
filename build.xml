@@ -154,7 +154,7 @@
 		</fileset>
 	</path>
 
-	<target name="build.scumd" depends="clean">
+	<target name="build.scumd" depends="clean, resources">
 		<javac destdir="${scumd.build.dir}" classpathref="scumd.build.classpath" srcdir="${scumd.src.dir}">
 		</javac>
 	</target>
