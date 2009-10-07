@@ -17,7 +17,7 @@ public class GitSCMRepositoryProvider {
 	public Repository provide(File base, String argument) throws IOException {
 		synchronized (repositoryCache) {
 			if (repositoryCache.containsKey(argument)){
-				log.info("Using Cached Repo" + argument);
+				log.info("Using Cached Repo " + argument);
 				return repositoryCache.get(argument);
 			}
 			File pathToRepo = new File(base, argument);
