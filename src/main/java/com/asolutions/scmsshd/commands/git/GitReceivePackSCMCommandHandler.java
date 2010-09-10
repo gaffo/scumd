@@ -53,7 +53,6 @@ public class GitReceivePackSCMCommandHandler extends GitSCMCommandImpl {
 			ReceivePack rp = receivePackProvider.provide(repo);
 	
 			rp.receive(inputStream, outputStream, errorStream);
-			int i = 0;
 		}
 		catch (IOException e){
 			log.error("rp caught ioe: ", e);

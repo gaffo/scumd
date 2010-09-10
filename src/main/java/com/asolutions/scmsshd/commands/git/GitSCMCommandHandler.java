@@ -9,7 +9,6 @@ import org.apache.sshd.server.CommandFactory.ExitCallback;
 import com.asolutions.scmsshd.authorizors.AuthorizationLevel;
 import com.asolutions.scmsshd.commands.FilteredCommand;
 import com.asolutions.scmsshd.commands.handlers.ISCMCommandHandler;
-import com.asolutions.scmsshd.exceptions.MustHaveWritePrivilagesToPushFailure;
 
 public class GitSCMCommandHandler implements ISCMCommandHandler {
 	

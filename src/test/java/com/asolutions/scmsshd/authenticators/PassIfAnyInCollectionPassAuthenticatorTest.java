@@ -38,7 +38,7 @@ public class PassIfAnyInCollectionPassAuthenticatorTest extends MockTestCase {
 		}});
 		
 		PassIfAnyInCollectionPassAuthenticator auth = new PassIfAnyInCollectionPassAuthenticator();
-		ArrayList authList = new ArrayList();
+		ArrayList<IPasswordAuthenticator> authList = new ArrayList<IPasswordAuthenticator>();
 		authList.add(failsAuth);
 		authList.add(passesAuth);
 		authList.add(failsAuth);
@@ -57,7 +57,7 @@ public class PassIfAnyInCollectionPassAuthenticatorTest extends MockTestCase {
 		}});
 		
 		PassIfAnyInCollectionPassAuthenticator auth = new PassIfAnyInCollectionPassAuthenticator();
-		ArrayList authList = new ArrayList();
+		ArrayList<IPasswordAuthenticator> authList = new ArrayList<IPasswordAuthenticator>();
 		authList.add(failsAuth);
 		authList.add(failsAuth);
 		auth.setAuthenticators(authList);

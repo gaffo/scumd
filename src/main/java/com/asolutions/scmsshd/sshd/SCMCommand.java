@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import java.util.logging.Level;
 import org.apache.sshd.server.CommandFactory.Command;
 import org.apache.sshd.server.CommandFactory.ExitCallback;
 import org.apache.sshd.server.CommandFactory.SessionAware;
@@ -20,8 +19,6 @@ public class SCMCommand implements Command, SessionAware {
 
 	private final String command;
 	private final String project;
-	private ServerSession session;
-	private final IProjectAuthorizer projectAuthorizer;
 
 	private OutputStream err;
 	private ExitCallback callback;
@@ -32,7 +29,6 @@ public class SCMCommand implements Command, SessionAware {
 			IProjectAuthorizer projectAuthorizer) {
 		this.command = "/usr/local/bin/" + command;
 		this.project = "/var/git" + argument.replaceAll("'", "");
-		this.projectAuthorizer = projectAuthorizer;
 	}
 
 	public void setErrorStream(OutputStream err) {
@@ -65,7 +61,6 @@ public class SCMCommand implements Command, SessionAware {
 	}
 
 	private void runImp() {
-		int rc = 0;
 		try {
 			try {
 				execute();
@@ -88,7 +83,6 @@ public class SCMCommand implements Command, SessionAware {
 	}
 
 	private void execute() throws IOException {
-		String commandAry[] = { command, project };
 		String string = command + " " + project;
 		log.debug("Creating Process: {}", string);
 		System.out.println("Creating Process: " + string);
@@ -101,7 +95,6 @@ public class SCMCommand implements Command, SessionAware {
 	}
 
 	public void setSession(ServerSession session) {
-		this.session = session;
 	}
 
 }

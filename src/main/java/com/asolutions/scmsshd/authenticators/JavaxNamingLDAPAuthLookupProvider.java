@@ -1,14 +1,13 @@
 package com.asolutions.scmsshd.authenticators;
 
 import java.util.Properties;
+
 import javax.naming.Context;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
-import javax.naming.directory.Attributes;
 import javax.naming.directory.InitialDirContext;
 import javax.naming.directory.SearchControls;
-import javax.naming.ldap.InitialLdapContext;
-import javax.security.auth.login.LoginContext;
+import javax.naming.directory.SearchResult;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +33,7 @@ public class JavaxNamingLDAPAuthLookupProvider implements
 		//initialize counter to total the results
 
 		// Search for objects using the filter
-		NamingEnumeration answer = context.search(username, searchFilter, searchCtls);
+		NamingEnumeration<SearchResult> answer = context.search(username, searchFilter, searchCtls);
 		return (answer.next());
 	}
 	

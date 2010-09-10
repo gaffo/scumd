@@ -19,7 +19,7 @@ public class PassIfAnyInCollectionPassAuthenticator implements
 		return null;
 	}
 
-	public void setAuthenticators(ArrayList authList) {
+	public void setAuthenticators(ArrayList<IPasswordAuthenticator> authList) {
 		this.authList = authList;
 	}
 

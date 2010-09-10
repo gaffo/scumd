@@ -1,11 +1,9 @@
 package com.asolutions.scmsshd.test.integration;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
@@ -15,7 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.spearce.jgit.lib.Ref;
 import org.spearce.jgit.lib.Repository;
-import org.spearce.jgit.lib.TextProgressMonitor;
 import org.spearce.jgit.transport.FetchResult;
 
 import com.asolutions.scmsshd.SCuMD;

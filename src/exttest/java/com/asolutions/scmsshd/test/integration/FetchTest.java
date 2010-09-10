@@ -65,7 +65,6 @@ public class FetchTest extends IntegrationTestCase {
 	        
 			Repository db = createCloneToRepo();
 			String remoteName = "origin";
-			File gitDir = new File(".git");
 			addRemoteConfigForRemoteGitDirectory(db, remoteName, serverPort, ".git");
 			FetchResult r = cloneFromRemote(db, remoteName);
 			System.out.println("results = " + r.getTrackingRefUpdates().size());

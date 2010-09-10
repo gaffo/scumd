@@ -20,7 +20,7 @@ public class PassIfAnyInCollectionPassAuthorizor implements IProjectAuthorizer {
 		return null;
 	}
 
-	public void setProjectAuthorizers(ArrayList authList) {
+	public void setProjectAuthorizers(ArrayList<IProjectAuthorizer> authList) {
 		this.authList = authList;
 	}
 

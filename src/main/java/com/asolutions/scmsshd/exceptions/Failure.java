@@ -2,6 +2,7 @@ package com.asolutions.scmsshd.exceptions;
 
 public class Failure extends RuntimeException {
 
+	private static final long serialVersionUID = 5704607166844629700L;
 	private int resultCode;
 	private final String genericError;
 	private final String specifics;
