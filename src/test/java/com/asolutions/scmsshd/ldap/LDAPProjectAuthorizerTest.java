@@ -20,14 +20,12 @@ public class LDAPProjectAuthorizerTest extends MockTestCase {
 	final private String groupBaseDN = "cn=Groups,DC=ldapserver,DC=lan";
 	final private String userBaseDN = "cn=User,DC=ldapserver,DC=lan";
 	final private String lookupUserPassword = "password";
-	final private String groupName = "proj-2-git";
 	private String usernameToCheck = "mike.gaffney";
 	private String userToCheckDN = "cn=" + usernameToCheck + "," + userBaseDN;
 	@Test
 	public void testLookupForProjectSuccess() throws Exception {
 		final IJavaxNamingProvider namingProvider = context.mock(IJavaxNamingProvider.class);
 		final InitialDirContext mockBinding = context.mock(InitialDirContext.class);
-		final String groupDN = groupName + "," + groupBaseDN;
 		
 		final Attributes mockAttrs = context.mock(Attributes.class);
 		final Attribute mockAttribute = context.mock(Attribute.class);
@@ -71,7 +69,6 @@ public class LDAPProjectAuthorizerTest extends MockTestCase {
 		
 		final IJavaxNamingProvider namingProvider = context.mock(IJavaxNamingProvider.class);
 		final InitialDirContext mockBinding = context.mock(InitialDirContext.class);
-		final String groupDN = groupName + "," + groupBaseDN;
 		
 		final Attributes mockAttrs = context.mock(Attributes.class);
 		final Attribute mockAttribute = context.mock(Attribute.class);
@@ -160,7 +157,7 @@ public class LDAPProjectAuthorizerTest extends MockTestCase {
 			will(returnValue(mockBinding));
 		}});
 		
-		LDAPProjectAuthorizer auth = new LDAPProjectAuthorizer(userDN, 
+		new LDAPProjectAuthorizer(userDN, 
 				   lookupUserPassword, 
 				   groupBaseDN,
 				   userBaseDN,
@@ -174,7 +171,6 @@ public class LDAPProjectAuthorizerTest extends MockTestCase {
 		
 		Class<IJavaxNamingProvider> typeToMock = IJavaxNamingProvider.class;
 		final IJavaxNamingProvider namingProvider = context.mock(typeToMock);
-		final InitialDirContext mockBinding = context.mock(InitialDirContext.class);
 
 		checking(new Expectations(){{
 			one(namingProvider).getBinding(userDN, lookupUserPassword);
@@ -182,7 +178,7 @@ public class LDAPProjectAuthorizerTest extends MockTestCase {
 		}});
 		
 		try{
-			LDAPProjectAuthorizer auth = new LDAPProjectAuthorizer(userDN, 
+			new LDAPProjectAuthorizer(userDN, 
 					   lookupUserPassword, 
 					   groupBaseDN,
 					   userBaseDN,
