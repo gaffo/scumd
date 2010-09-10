@@ -33,7 +33,7 @@ public class PassIfAnyInCollectionPassAuthorizorTest extends MockTestCase {
 		}});
 		
 		PassIfAnyInCollectionPassAuthorizor auth = new PassIfAnyInCollectionPassAuthorizor();
-		ArrayList authList = new ArrayList();
+		ArrayList<IProjectAuthorizer> authList = new ArrayList<IProjectAuthorizer>();
 		authList.add(failsAuth);
 		authList.add(passesAuth);
 		authList.add(failsAuth);
@@ -51,7 +51,7 @@ public class PassIfAnyInCollectionPassAuthorizorTest extends MockTestCase {
 		}});
 		
 		PassIfAnyInCollectionPassAuthorizor auth = new PassIfAnyInCollectionPassAuthorizor();
-		ArrayList authList = new ArrayList();
+		ArrayList<IProjectAuthorizer> authList = new ArrayList<IProjectAuthorizer>();
 		authList.add(failsAuth);
 		authList.add(failsAuth);
 		auth.setProjectAuthorizers(authList);

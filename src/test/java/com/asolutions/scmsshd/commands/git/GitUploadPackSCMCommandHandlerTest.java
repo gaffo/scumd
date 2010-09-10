@@ -15,7 +15,6 @@ import com.asolutions.MockTestCase;
 import com.asolutions.scmsshd.authorizors.AuthorizationLevel;
 import com.asolutions.scmsshd.commands.FilteredCommand;
 import com.asolutions.scmsshd.commands.factories.GitSCMCommandFactory;
-import com.asolutions.scmsshd.commands.handlers.ISCMCommandHandler;
 
 public class GitUploadPackSCMCommandHandlerTest extends MockTestCase {
 

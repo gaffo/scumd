@@ -12,10 +12,6 @@ import com.asolutions.MockTestCase;
 import com.asolutions.scmsshd.authorizors.AuthorizationLevel;
 import com.asolutions.scmsshd.commands.FilteredCommand;
 import com.asolutions.scmsshd.commands.handlers.ISCMCommandHandler;
-import com.asolutions.scmsshd.exceptions.Failure;
-import com.asolutions.scmsshd.exceptions.MustHaveWritePrivilagesToPushFailure;
-
-import static org.junit.Assert.*;
 
 public class GitSCMCommandHandlerTest extends MockTestCase {
 	

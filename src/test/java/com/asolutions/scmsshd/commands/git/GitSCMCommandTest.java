@@ -1,11 +1,10 @@
 package com.asolutions.scmsshd.commands.git;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Properties;
 
 import org.junit.Test;
-import org.spearce.jgit.util.QuotedString.GitPathStyle;
-
-import static org.junit.Assert.*;
 
 import com.asolutions.MockTestCase;
 import com.asolutions.scmsshd.commands.FilteredCommand;

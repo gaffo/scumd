@@ -84,11 +84,9 @@ public class GitReceivePackSCMCommandHandlerTest extends MockTestCase {
 
 		final GitSCMRepositoryProvider mockRepoProvider = context
 				.mock(GitSCMRepositoryProvider.class);
-		final Repository mockRepoistory = context.mock(Repository.class);
 		final File base = new File(pathtobasedir);
 		final GitReceivePackProvider mockReceivePackProvider = context
 				.mock(GitReceivePackProvider.class);
-		final ReceivePack mockUploadPack = context.mock(ReceivePack.class);
 
 		final Properties mockConfig = context.mock(Properties.class);
 
