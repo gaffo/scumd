@@ -18,17 +18,18 @@ public class LDAPAuthenticatorTest extends MockTestCase {
 	private static final String PASSWORD = "password";
 	private static final String USERNAME = "username";
 	private static String USERDN = "cn=" + USERNAME + "," + USERBASE;
-
+	private static String MATCHING_ELEMENT = "sAMAccountName=";
+	
 	@Test
-	public void testAuthenticatePassesWithNoException() throws Exception {
+	public void testAuthenticate_UsesMatchingElementFromCtor_PassesWithNoException() throws Exception {
 		final ILDAPAuthLookupProvider mockAuthLookupProvider = context.mock(ILDAPAuthLookupProvider.class);
 		final ServerSession mockServerSession = context.mock(ServerSession.class);
 		checking(new Expectations(){{
-			oneOf(mockAuthLookupProvider).provide(URL, USERDN, PASSWORD, true);
+			oneOf(mockAuthLookupProvider).provide(URL, MATCHING_ELEMENT + USERNAME + "," + USERBASE, PASSWORD, true);
 			will(returnValue("hi"));
 		}});
 		
-		LDAPAuthenticator auth = new LDAPAuthenticator(URL, USERBASE, true, mockAuthLookupProvider);
+		LDAPAuthenticator auth = new LDAPAuthenticator(URL, USERBASE,MATCHING_ELEMENT, true, mockAuthLookupProvider);
 		
 		assertNotNull(auth.authenticate(USERNAME, PASSWORD, mockServerSession));
 	}
@@ -39,11 +40,11 @@ public class LDAPAuthenticatorTest extends MockTestCase {
 		final ServerSession mockServerSession = context.mock(ServerSession.class);
 		
 		checking(new Expectations(){{
-			oneOf(mockAuthLookupProvider).provide(URL, USERDN, PASSWORD, true);
+			oneOf(mockAuthLookupProvider).provide(URL, MATCHING_ELEMENT + USERNAME + "," + USERBASE, PASSWORD, true);
 			will(returnValue(null));
 		}});
 		
-		LDAPAuthenticator auth = new LDAPAuthenticator("ldaps://server.lan", USERBASE, true, mockAuthLookupProvider);
+		LDAPAuthenticator auth = new LDAPAuthenticator(URL, USERBASE,MATCHING_ELEMENT, true, mockAuthLookupProvider);
 		
 		assertNull(auth.authenticate(USERNAME, PASSWORD, mockServerSession));
 	}

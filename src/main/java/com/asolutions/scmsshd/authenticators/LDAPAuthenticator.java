@@ -15,21 +15,30 @@ public class LDAPAuthenticator implements IPasswordAuthenticator {
 	private String userBase;
 	private boolean promiscuous;
 	private ILDAPAuthLookupProvider provider;
+	private final String matchingElement;
 
 	public LDAPAuthenticator(String url, String userBase, boolean promiscuous) {
-		this(url, userBase, promiscuous, new JavaxNamingLDAPAuthLookupProvider());
+		this(url, userBase,"cn=", promiscuous, new JavaxNamingLDAPAuthLookupProvider());
 	}
 
 	public LDAPAuthenticator(String url, String userBase, boolean promiscuous,
 			                 ILDAPAuthLookupProvider provider) {
-		this.url = url;
-		this.userBase = userBase;
-		this.promiscuous = promiscuous;
-		this.provider = provider;
+		this(url,userBase, "cn=", promiscuous, provider);
+	}
+
+	public LDAPAuthenticator(String url, String userbase,
+			String matchingElement, boolean promiscuous,
+			ILDAPAuthLookupProvider mockAuthLookupProvider) {
+				this.url = url;
+				this.userBase = userbase;
+				this.matchingElement = matchingElement;
+				this.promiscuous = promiscuous;
+				provider = mockAuthLookupProvider;
+		
 	}
 
 	public Object authenticate(String username, String password, ServerSession session) {
-		username = "cn=" + username + "," + userBase;
+		username = matchingElement + username + "," + userBase;
 		try {
 			return provider.provide(url, username, password, promiscuous);
 		} catch (NamingException e) {
