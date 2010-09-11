@@ -8,9 +8,10 @@ import javax.naming.Context;
 
 import org.junit.Test;
 
+import com.asolutions.scmsshd.ldap.LDAPBinding;
 import com.asolutions.scmsshd.ssl.PromiscuousSSLSocketFactory;
 
-public class JavaxNamingLDAPAuthLookupProviderTest {
+public class LDAPBindingTest {
 
 	private static final String PASSWORD = "password";
 	private static final String USERNAME = "username";
@@ -18,7 +19,7 @@ public class JavaxNamingLDAPAuthLookupProviderTest {
 	
 	@Test
 	public void testGettingPropertiesNonPromiscuous() throws Exception {
-		JavaxNamingLDAPAuthLookupProvider provider = new JavaxNamingLDAPAuthLookupProvider();
+		LDAPBinding provider = new LDAPBinding(USERNAME, PASSWORD, URL, false);
 		Properties props = provider.getProperties(URL, USERNAME, PASSWORD, false);
 		assertEquals(4, props.keySet().size());
 		assertEquals(URL, props.get(Context.PROVIDER_URL));
@@ -29,7 +30,7 @@ public class JavaxNamingLDAPAuthLookupProviderTest {
 	
 	@Test
 	public void testGettingPropertiesPromiscuous() throws Exception {
-		JavaxNamingLDAPAuthLookupProvider provider = new JavaxNamingLDAPAuthLookupProvider();
+		LDAPBinding provider = new LDAPBinding(USERNAME, PASSWORD, URL, false);
 		Properties props = provider.getProperties(URL, USERNAME, PASSWORD, true);
 		assertEquals(5, props.keySet().size());
 		assertEquals(URL, props.get(Context.PROVIDER_URL));
