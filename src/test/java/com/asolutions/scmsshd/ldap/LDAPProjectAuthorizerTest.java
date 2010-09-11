@@ -20,13 +20,13 @@ import com.asolutions.scmsshd.authorizors.AuthorizationLevel;
 public class LDAPProjectAuthorizerTest extends MockTestCase {
 	final private String groupBaseDN = "cn=Groups,DC=ldapserver,DC=lan";
 	final private String userBaseDN = "cn=User,DC=ldapserver,DC=lan";
-	private LDAPBinding ldapBinding;
+	private LDAPBindingProvider ldapBinding;
 	private String usernameToCheck = "mike.gaffney";
 	private String userToCheckDN = "cn=" + usernameToCheck + "," + userBaseDN;
 	private LDAPUsernameResolver ldapUsernameResolver;
 	@Before
 	public void setupMocks() {
-		ldapBinding = context.mock(LDAPBinding.class);
+		ldapBinding = context.mock(LDAPBindingProvider.class);
 		ldapUsernameResolver = context.mock(LDAPUsernameResolver.class);
 	}
 	

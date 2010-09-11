@@ -6,17 +6,17 @@ import org.apache.sshd.server.session.ServerSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.asolutions.scmsshd.ldap.LDAPBinding;
+import com.asolutions.scmsshd.ldap.LDAPBindingProvider;
 
 public class LDAPAuthenticator implements IPasswordAuthenticator {
 
 	protected final Logger log = LoggerFactory.getLogger(getClass());
-	private LDAPBinding provider;
+	private LDAPBindingProvider provider;
 	private LDAPUsernameResolver resolver;
 
 
 	public LDAPAuthenticator(LDAPUsernameResolver resolver,
-			LDAPBinding ldapBinding) {
+			LDAPBindingProvider ldapBinding) {
 				this.resolver = resolver;
 				provider = ldapBinding;
 	}

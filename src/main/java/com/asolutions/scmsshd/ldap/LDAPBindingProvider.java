@@ -11,13 +11,13 @@ import javax.naming.directory.InitialDirContext;
 
 import com.asolutions.scmsshd.ssl.PromiscuousSSLSocketFactory;
 
-public class LDAPBinding {
+public class LDAPBindingProvider {
 	private String lookupUserDN;
 	private String lookupUserPassword;
 	private String url;
 	private boolean promiscuous;
 	
-	public LDAPBinding(String lookupUserDN, String lookupUserPassword,
+	public LDAPBindingProvider(String lookupUserDN, String lookupUserPassword,
 			String url, boolean promiscuous) {
 		this.lookupUserDN = lookupUserDN;
 		this.lookupUserPassword = lookupUserPassword;
