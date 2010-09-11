@@ -11,7 +11,7 @@ import org.jmock.Expectations;
 import org.junit.Test;
 
 import com.asolutions.MockTestCase;
-import com.asolutions.scmsshd.ldap.LDAPBinding;
+import com.asolutions.scmsshd.ldap.LDAPBindingProvider;
 
 
 public class LDAPAuthenticatorTest extends MockTestCase {
@@ -23,7 +23,7 @@ public class LDAPAuthenticatorTest extends MockTestCase {
 	@Test
 	public void testAuthenticate_UsesMatchingElementFromCtor_PassesWithNoException() throws Exception {
 		final ServerSession mockServerSession = context.mock(ServerSession.class);
-		final LDAPBinding ldapBinding = context.mock(LDAPBinding.class);
+		final LDAPBindingProvider ldapBinding = context.mock(LDAPBindingProvider.class);
 		final LDAPUsernameResolver ldapUsernameResolver = context.mock(LDAPUsernameResolver.class);
 		final InitialDirContext binding = context.mock(InitialDirContext.class);
 		checking(new Expectations(){{
@@ -41,7 +41,7 @@ public class LDAPAuthenticatorTest extends MockTestCase {
 	@Test
 	public void testAuthenticateFailsNull() throws Exception {
 		final ServerSession mockServerSession = context.mock(ServerSession.class);
-		final LDAPBinding ldapBinding = context.mock(LDAPBinding.class);
+		final LDAPBindingProvider ldapBinding = context.mock(LDAPBindingProvider.class);
 		final LDAPUsernameResolver ldapUsernameResolver = context.mock(LDAPUsernameResolver.class);
 		checking(new Expectations(){{
 			one(ldapUsernameResolver).resolverUserName(USERNAME);

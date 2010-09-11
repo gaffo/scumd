@@ -9,16 +9,16 @@ import javax.naming.directory.InitialDirContext;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 
-import com.asolutions.scmsshd.ldap.LDAPBinding;
+import com.asolutions.scmsshd.ldap.LDAPBindingProvider;
 
 public class LDAPUsernameResolver {
-	LDAPBinding provider;
+	LDAPBindingProvider provider;
 	private String userBase;
 	private String matchingElement;
-	public LDAPUsernameResolver(LDAPBinding provider, String userBase) {
+	public LDAPUsernameResolver(LDAPBindingProvider provider, String userBase) {
 		this(provider, userBase, "cn=");
 	}
-	public LDAPUsernameResolver(LDAPBinding provider, String userBase, String matchingElement) {
+	public LDAPUsernameResolver(LDAPBindingProvider provider, String userBase, String matchingElement) {
 		this.provider = provider;
 		this.userBase = userBase;
 		this.matchingElement = matchingElement;

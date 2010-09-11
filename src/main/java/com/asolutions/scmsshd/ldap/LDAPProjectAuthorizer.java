@@ -18,13 +18,13 @@ public class LDAPProjectAuthorizer implements IProjectAuthorizer {
 	private String groupBaseDN;
 	private String groupSuffix;
 	private AuthorizationLevel authorizationLevel;
-	private LDAPBinding binding;
+	private LDAPBindingProvider binding;
 	private LDAPUsernameResolver resolver;
 
 	public LDAPProjectAuthorizer(String groupBaseDN, 
 								 String groupSuffix,
 								 AuthorizationLevel authorizationLevel,
-								 LDAPBinding binding,
+								 LDAPBindingProvider binding,
 								 LDAPUsernameResolver resolver)
 			throws NamingException {
 		this.groupBaseDN = groupBaseDN;
