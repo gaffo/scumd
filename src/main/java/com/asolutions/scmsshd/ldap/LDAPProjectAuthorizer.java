@@ -3,67 +3,43 @@ package com.asolutions.scmsshd.ldap;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.naming.directory.Attributes;
-import javax.naming.directory.InitialDirContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.asolutions.scmsshd.authenticators.LDAPUsernameResolver;
 import com.asolutions.scmsshd.authorizors.AuthorizationLevel;
 import com.asolutions.scmsshd.sshd.IProjectAuthorizer;
 import com.asolutions.scmsshd.sshd.UnparsableProjectException;
 
 public class LDAPProjectAuthorizer implements IProjectAuthorizer {
 	protected final Logger log = LoggerFactory.getLogger(getClass());
-	private String lookupUserDN;
-	private String lookupUserPassword;
+
 	private String groupBaseDN;
-	private String userBaseDN;
 	private String groupSuffix;
 	private AuthorizationLevel authorizationLevel;
-	private IJavaxNamingProvider provider;
+	private LDAPBinding binding;
+	private LDAPUsernameResolver resolver;
 
-	public LDAPProjectAuthorizer(String lookupUserDN,
-								 String lookupUserPassword, 
-								 String groupBaseDN, 
-								 String userBaseDN,
+	public LDAPProjectAuthorizer(String groupBaseDN, 
 								 String groupSuffix,
-								 String url, 
-								 boolean promiscuous, 
-								 AuthorizationLevel authorizationLevel)
+								 AuthorizationLevel authorizationLevel,
+								 LDAPBinding binding,
+								 LDAPUsernameResolver resolver)
 			throws NamingException {
-		this(lookupUserDN, lookupUserPassword, groupBaseDN,userBaseDN, groupSuffix,
-				new JavaxNamingProvider(url, promiscuous), authorizationLevel);
-	}
-
-	public LDAPProjectAuthorizer(String lookupUserDN,
-								 String lookupUserPassword, 
-								 String groupBaseDN,
-								 String userBaseDN,
-								 String groupSuffix,
-								 IJavaxNamingProvider provider, 
-								 AuthorizationLevel authorizationLevel) throws NamingException {
-		this.lookupUserDN = lookupUserDN;
-		this.lookupUserPassword = lookupUserPassword;
 		this.groupBaseDN = groupBaseDN;
-		this.userBaseDN = userBaseDN;
 		this.groupSuffix = groupSuffix;
-		this.provider = provider;
 		this.authorizationLevel = authorizationLevel;
-		getLdapBinding(provider);
-	}
-
-	protected InitialDirContext getLdapBinding(IJavaxNamingProvider provider)
-			throws NamingException {
-		return provider.getBinding(this.lookupUserDN,
-										   this.lookupUserPassword);
+		this.binding = binding;
+		this.resolver = resolver;
 	}
 
 	public AuthorizationLevel userIsAuthorizedForProject(String username, String group)
 			throws UnparsableProjectException {
-		username = getUserDN(username);
-		group = getGroupDN(group);
 		try {
-			Attributes attrs = getLdapBinding(provider).getAttributes(group);
+			username = resolver.resolverUserName(username);
+			group = getGroupDN(group);
+			Attributes attrs = binding.getBinding().getAttributes(group);
 			NamingEnumeration<?> e = attrs.get("member").getAll();
 			while (e.hasMoreElements())
 			{
@@ -88,9 +64,4 @@ public class LDAPProjectAuthorizer implements IProjectAuthorizer {
 			return "cn=" + group + "-" + groupSuffix + "," + groupBaseDN;
 		}
 	}
-
-	private String getUserDN(String username) {
-		return "cn=" + username + "," + userBaseDN;
-	}
-
 }
