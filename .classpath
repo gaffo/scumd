@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="depend/minasshd/sshd-core/src/test/resources"/>
-	<classpathentry kind="src" path="depend/minasshd/sshd-core/src/test/java"/>
+	<classpathentry excluding="**/.svn/**" kind="src" path="depend/minasshd/sshd-core/src/test/resources"/>
+	<classpathentry excluding="**/.svn/**" kind="src" path="depend/minasshd/sshd-core/src/test/java"/>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" path="src/exttest/java"/>
-	<classpathentry kind="src" path="depend/minasshd/sshd-core/src/main/filtered-resources"/>
-	<classpathentry kind="src" path="depend/minasshd/sshd-core/src/main/java"/>
-	<classpathentry kind="src" path="depend/minasshd/sshd-pam/src/main/java"/>
+	<classpathentry excluding="**/.svn/**" kind="src" path="depend/minasshd/sshd-core/src/main/filtered-resources"/>
+	<classpathentry excluding="**/.svn/**" kind="src" path="depend/minasshd/sshd-core/src/main/java"/>
+	<classpathentry excluding="**/.svn/**" kind="src" path="depend/minasshd/sshd-pam/src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/commons-io-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/aopalliance-1.0.jar"/>
