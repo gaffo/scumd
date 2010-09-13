@@ -27,7 +27,7 @@ public class LDAPAuthenticatorTest extends MockTestCase {
 		final LDAPUsernameResolver ldapUsernameResolver = context.mock(LDAPUsernameResolver.class);
 		final InitialDirContext binding = context.mock(InitialDirContext.class);
 		checking(new Expectations(){{
-			one(ldapUsernameResolver).resolverUserName(USERNAME);
+			one(ldapUsernameResolver).resolveUserName(USERNAME);
 			will(returnValue(RESOLVED_USER_NAME));
 			oneOf(ldapBinding).getBinding(RESOLVED_USER_NAME, PASSWORD);
 			will(returnValue(binding));
@@ -44,7 +44,7 @@ public class LDAPAuthenticatorTest extends MockTestCase {
 		final LDAPBindingProvider ldapBinding = context.mock(LDAPBindingProvider.class);
 		final LDAPUsernameResolver ldapUsernameResolver = context.mock(LDAPUsernameResolver.class);
 		checking(new Expectations(){{
-			one(ldapUsernameResolver).resolverUserName(USERNAME);
+			one(ldapUsernameResolver).resolveUserName(USERNAME);
 			will(returnValue(RESOLVED_USER_NAME));
 			oneOf(ldapBinding).getBinding(RESOLVED_USER_NAME, PASSWORD);
 			will(throwException(new NamingException()));

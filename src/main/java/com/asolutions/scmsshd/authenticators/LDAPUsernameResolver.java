@@ -24,7 +24,7 @@ public class LDAPUsernameResolver {
 		this.matchingElement = matchingElement;
 	}
 	
-	public String resolverUserName(String username) throws NamingException{
+	public String resolveUserName(String username) throws NamingException{
 		InitialDirContext InitialDirectoryContext = provider.getBinding();
 		SearchControls searchCtls = new SearchControls();
 		//Specify the search scope

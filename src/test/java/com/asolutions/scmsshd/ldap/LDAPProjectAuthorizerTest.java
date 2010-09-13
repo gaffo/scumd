@@ -39,7 +39,7 @@ public class LDAPProjectAuthorizerTest extends MockTestCase {
 		final NamingEnumeration<?> mockEnum = context.mock(NamingEnumeration.class);
 
 		checking(new Expectations(){{
-			one(ldapUsernameResolver).resolverUserName(usernameToCheck);
+			one(ldapUsernameResolver).resolveUserName(usernameToCheck);
 			will(returnValue(userToCheckDN));
 			
 			one(mockBinding).getAttributes("cn=proj-2-git,cn=Groups,DC=ldapserver,DC=lan");
@@ -80,7 +80,7 @@ public class LDAPProjectAuthorizerTest extends MockTestCase {
 
 
 		checking(new Expectations(){{
-			one(ldapUsernameResolver).resolverUserName(usernameToCheck);
+			one(ldapUsernameResolver).resolveUserName(usernameToCheck);
 			will(returnValue(userToCheckDN));
 			
 			one(mockBinding).getAttributes("cn=proj-2,cn=Groups,DC=ldapserver,DC=lan");
@@ -121,7 +121,7 @@ public class LDAPProjectAuthorizerTest extends MockTestCase {
 
 		checking(new Expectations(){{
 			
-			one(ldapUsernameResolver).resolverUserName(usernameToCheck);
+			one(ldapUsernameResolver).resolveUserName(usernameToCheck);
 			will(returnValue(userToCheckDN));
 
 			one(mockBinding).getAttributes("cn=proj-2-git,cn=Groups,DC=ldapserver,DC=lan");
