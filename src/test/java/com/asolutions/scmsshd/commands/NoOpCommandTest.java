@@ -1,7 +1,5 @@
 package com.asolutions.scmsshd.commands;
 
-import static org.junit.Assert.*;
-
 import org.apache.sshd.server.CommandFactory.ExitCallback;
 import org.jmock.Expectations;
 import org.junit.Test;

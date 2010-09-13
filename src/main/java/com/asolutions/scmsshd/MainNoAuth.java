@@ -8,26 +8,16 @@ import javax.naming.NamingException;
 import org.apache.sshd.SshServer;
 import org.apache.sshd.common.Compression;
 import org.apache.sshd.common.NamedFactory;
-import org.apache.sshd.common.compression.CompressionDelayedZlib;
 import org.apache.sshd.common.compression.CompressionNone;
-import org.apache.sshd.common.compression.CompressionZlib;
 import org.apache.sshd.common.keyprovider.FileKeyPairProvider;
 import org.apache.sshd.server.PasswordAuthenticator;
 import org.apache.sshd.server.session.ServerSession;
 
-import com.asolutions.asynchrony.customizations.AsynchronyPathToProjectNameConverter;
-import com.asolutions.scmsshd.authenticators.LDAPAuthenticator;
-import com.asolutions.scmsshd.authenticators.PassIfAnyInCollectionPassAuthenticator;
-import com.asolutions.scmsshd.authorizors.AuthorizationLevel;
-import com.asolutions.scmsshd.authorizors.PassIfAnyInCollectionPassAuthorizor;
 import com.asolutions.scmsshd.commands.factories.CommandFactoryBase;
 import com.asolutions.scmsshd.commands.factories.GitCommandFactory;
 import com.asolutions.scmsshd.commands.factories.GitSCMCommandFactory;
 import com.asolutions.scmsshd.converters.path.regexp.AMatchingGroupPathToProjectNameConverter;
-import com.asolutions.scmsshd.ldap.LDAPProjectAuthorizer;
 import com.asolutions.scmsshd.sshd.AlwaysFailPublicKeyAuthenticator;
-import com.asolutions.scmsshd.sshd.IProjectAuthorizer;
-import com.asolutions.scmsshd.sshd.UnparsableProjectException;
 
 
 public class MainNoAuth {

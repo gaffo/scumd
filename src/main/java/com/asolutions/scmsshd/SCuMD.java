@@ -44,8 +44,7 @@ public class SCuMD extends SshServer {
 			System.err.println("Usage: SCuMD pathToConfigFile");
 			return;
 		}
-		FileSystemXmlApplicationContext context = new FileSystemXmlApplicationContext(
-				args[0]);
+		new FileSystemXmlApplicationContext(args[0]);
 	}
 
 	public SCuMD() {
