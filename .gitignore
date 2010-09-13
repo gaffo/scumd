@@ -9,3 +9,5 @@ nohup.out
 testoutput/*
 testoutput
 TEST-*
+config*.*
+log
