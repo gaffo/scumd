@@ -36,6 +36,7 @@ public class SCMCommandTest extends MockTestCase {
 	private OutputStream mockOutputStream;
 	private OutputStream mockErrorStream;
 	private Properties mockConfig;
+	private ISCMCommandHandler mockSCMCommandHandler;
 
 	@Before
 	public void setup() {
@@ -48,16 +49,14 @@ public class SCMCommandTest extends MockTestCase {
 		mockOutputStream = context.mock(OutputStream.class);
 		mockErrorStream = context.mock(OutputStream.class, "mockErrorStream");
 		mockConfig = context.mock(Properties.class);
+		mockSCMCommandHandler = context.mock(ISCMCommandHandler.class);
+		command = new SCMCommand(filteredCommand, mockProjectAuthorizer, mockSCMCommandHandler, mockPathToProjectConverter, mockConfig);
 		
-		command.setProjectAuthorizer(mockProjectAuthorizer);
 		command.setSession(mockSession);
 		command.setExitCallback(mockExitCallback);
-		command.setPathToProjectNameConverter(mockPathToProjectConverter);
-		command.setFilteredCommand(filteredCommand);
 		command.setErrorStream(mockErrorStream);
 		command.setInputStream(mockInputStream);
 		command.setOutputStream(mockOutputStream);
-		command.setConfiguration(mockConfig);
 	}
 
 	@Test
@@ -109,7 +108,6 @@ public class SCMCommandTest extends MockTestCase {
 
 	@Test
 	public void testAuthorizerPassing() throws Exception {
-		final ISCMCommandHandler mockSCMCommandHandler = context.mock(ISCMCommandHandler.class);
 		checking(new Expectations() {{
 			one(mockSession).getUsername();
 			will(returnValue(USERNAME));
@@ -125,7 +123,6 @@ public class SCMCommandTest extends MockTestCase {
 											   mockConfig,
 											   AuthorizationLevel.AUTH_LEVEL_READ_ONLY);
 		}});
-		command.setSCMCommandHandler(mockSCMCommandHandler);
 		command.runImpl();
 	}
 	
