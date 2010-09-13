@@ -23,7 +23,7 @@ public class LDAPAuthenticator implements IPasswordAuthenticator {
 
 	public Object authenticate(String username, String password, ServerSession session) {
 		try {
-			String nameInNamespace = resolver.resolverUserName(username);
+			String nameInNamespace = resolver.resolveUserName(username);
 			return this.provider.getBinding(nameInNamespace, password);
 		} catch (NamingException e) {
 			log.error("Error Authenticating", e);

@@ -37,7 +37,7 @@ public class LDAPProjectAuthorizer implements IProjectAuthorizer {
 	public AuthorizationLevel userIsAuthorizedForProject(String username, String group)
 			throws UnparsableProjectException {
 		try {
-			username = resolver.resolverUserName(username);
+			username = resolver.resolveUserName(username);
 			group = getGroupDN(group);
 			Attributes attrs = binding.getBinding().getAttributes(group);
 			NamingEnumeration<?> e = attrs.get("member").getAll();
