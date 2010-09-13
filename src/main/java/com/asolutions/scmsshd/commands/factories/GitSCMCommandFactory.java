@@ -18,12 +18,7 @@ public class GitSCMCommandFactory implements ISCMCommandFactory {
 			IProjectAuthorizer projectAuthorizer,
 			IPathToProjectNameConverter pathToProjectNameConverter,
 			Properties configuration) {
-		SCMCommand retVal = new SCMCommand();
-		retVal.setFilteredCommand(filteredCommand);
-		retVal.setProjectAuthorizer(projectAuthorizer);
-		retVal.setSCMCommandHandler(new GitSCMCommandHandler());
-		retVal.setPathToProjectNameConverter(pathToProjectNameConverter);
-		retVal.setConfiguration(configuration);
+		SCMCommand retVal = new SCMCommand(filteredCommand, projectAuthorizer, new GitSCMCommandHandler(), pathToProjectNameConverter, configuration);
 		return retVal;
 	}
 

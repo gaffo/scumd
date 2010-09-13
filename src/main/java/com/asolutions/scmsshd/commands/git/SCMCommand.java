@@ -37,6 +37,18 @@ public class SCMCommand implements Command, SessionAware{
 		super();
 	}
 
+	public SCMCommand(FilteredCommand filteredCommand,
+			IProjectAuthorizer projectAuthorizer,
+			ISCMCommandHandler anSCMCommandHandler,
+			IPathToProjectNameConverter pathToProjectNameConverter,
+			Properties configuration) {
+				this.filteredCommand = filteredCommand;
+				this.projectAuthorizer = projectAuthorizer;
+				this.sCMCommandHandler = anSCMCommandHandler;
+				this.pathToProjectNameConverter = pathToProjectNameConverter;
+				this.configuration = configuration;
+	}
+
 	public ExitCallback getExitCallback() {
 		return exitCallback;
 	}
@@ -86,32 +98,16 @@ public class SCMCommand implements Command, SessionAware{
 		}
 	}
 
-	public void setFilteredCommand(FilteredCommand filteredCommand) {
-		this.filteredCommand = filteredCommand;
-	}
-
 	public FilteredCommand getFilteredCommand() {
 		return filteredCommand;
 	}
 
-	public void setProjectAuthorizer(IProjectAuthorizer projectAuthenticator) {
-		this.projectAuthorizer = projectAuthenticator;
-	}
-	
 	public IProjectAuthorizer getProjectAuthorizer() {
 		return projectAuthorizer;
 	}
 	
-	public void setPathToProjectNameConverter(IPathToProjectNameConverter pathToProjectNameConverter) {
-		this.pathToProjectNameConverter = pathToProjectNameConverter;
-	}
-	
 	public IPathToProjectNameConverter getPathToProjectNameConverter() {
 		return pathToProjectNameConverter;
-	}
-	
-	public void setSCMCommandHandler(ISCMCommandHandler sCMCommandHandler) {
-		this.sCMCommandHandler = sCMCommandHandler;
 	}
 	
 	public ISCMCommandHandler getSCMCommandHandler() {
@@ -153,10 +149,6 @@ public class SCMCommand implements Command, SessionAware{
 		}
 	}
 
-	public void setConfiguration(Properties config) {
-		this.configuration = config;
-	}
-	
 	public Properties getConfiguration() {
 		return configuration;
 	}
