@@ -271,8 +271,7 @@ public class IntegrationTestCase {
 		switch (rru.getStatus()) {
 		case OK:
 			if (rru.isDelete())
-				printUpdateLine('-', "[deleted]", null, remoteName, null, out,
-						db);
+				printUpdateLine('-', "[deleted]", null, remoteName, null, out);
 			else {
 				final Ref oldRef = result.getAdvertisedRef(remoteName);
 				if (oldRef == null) {
@@ -282,7 +281,7 @@ public class IntegrationTestCase {
 					else
 						summary = "[new branch]";
 					printUpdateLine('*', summary, srcRef, remoteName, null,
-							out, db);
+							out);
 				} else {
 					boolean fastForward = rru.isFastForward();
 					final char flag = fastForward ? ' ' : '+';
@@ -292,53 +291,52 @@ public class IntegrationTestCase {
 							+ rru.getNewObjectId().abbreviate(db).name();
 					final String message = fastForward ? null : "forced update";
 					printUpdateLine(flag, summary, srcRef, remoteName, message,
-							out, db);
+							out);
 				}
 			}
 			break;
 
 		case NON_EXISTING:
-			printUpdateLine('X', "[no match]", null, remoteName, null, out, db);
+			printUpdateLine('X', "[no match]", null, remoteName, null, out);
 			break;
 
 		case REJECTED_NODELETE:
 			printUpdateLine('!', "[rejected]", null, remoteName,
-					"remote side does not support deleting refs", out, db);
+					"remote side does not support deleting refs", out);
 			break;
 
 		case REJECTED_NONFASTFORWARD:
 			printUpdateLine('!', "[rejected]", srcRef, remoteName,
-					"non-fast forward", out, db);
+					"non-fast forward", out);
 			break;
 
 		case REJECTED_REMOTE_CHANGED:
 			final String message = "remote ref object changed - is not expected one "
 					+ rru.getExpectedOldObjectId().abbreviate(db).name();
 			printUpdateLine('!', "[rejected]", srcRef, remoteName, message,
-					out, db);
+					out);
 			break;
 
 		case REJECTED_OTHER_REASON:
 			printUpdateLine('!', "[remote rejected]", srcRef, remoteName, rru
-					.getMessage(), out, db);
+					.getMessage(), out);
 			break;
 
 		case UP_TO_DATE:
-			printUpdateLine('=', "[up to date]", srcRef, remoteName, null, out,
-					db);
+			printUpdateLine('=', "[up to date]", srcRef, remoteName, null, out);
 			break;
 
 		case NOT_ATTEMPTED:
 		case AWAITING_REPORT:
 			printUpdateLine('?', "[unexpected push-process behavior]", srcRef,
-					remoteName, rru.getMessage(), out, db);
+					remoteName, rru.getMessage(), out);
 			break;
 		}
 	}
 
 	protected void printUpdateLine(final char flag, final String summary,
 			final String srcRef, final String destRef, final String message,
-			PrintStream out, Repository db) {
+			PrintStream out) {
 		out.format(" %c %-17s", flag, summary);
 
 		if (srcRef != null)
